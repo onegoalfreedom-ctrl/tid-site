@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TID - Vitrine Produit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #4A90E2;
+            --teal: #1ABC9C;
+            --green: #27AE60;
+            --deep-teal: #16A085;
+            --slate: #334155;
+            --dark: #0B2236;
+            --bg-light: #F3FAF8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        body {
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--dark);
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.12), rgba(26, 188, 156, 0.12));
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .background-radial {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(80% 60% at 50% -10%, rgba(74, 144, 226, 0.06), transparent);
+            z-index: -10;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.12);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--blue);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--slate);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.98rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 7px 16px rgba(74, 144, 226, 0.23);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(26, 188, 156, 0.25);
+        }
+
+        main {
+            overflow: hidden;
+        }
+
+        section {
+            padding: 4.8rem 0;
+        }
+
+        .container {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+        }
+
+        .hero {
+            position: relative;
+            padding-top: 6rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-text .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(26, 188, 156, 0.18);
+            color: var(--deep-teal);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            margin-top: 1.2rem;
+            font-size: clamp(2.6rem, 5vw, 3.6rem);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.07;
+        }
+
+        .hero p {
+            margin-top: 1.3rem;
+            font-size: 1.08rem;
+            color: rgba(11, 34, 54, 0.78);
+            line-height: 1.7;
+        }
+
+        .actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--teal), var(--green));
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 8px 18px rgba(26, 188, 156, 0.28);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(39, 174, 96, 0.28);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid #94a3b8;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blue);
+            color: var(--dark);
+            box-shadow: 0 12px 22px rgba(74, 144, 226, 0.16);
+        }
+
+        .hero-card {
+            position: relative;
+            padding: 2.4rem 2.1rem;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.64);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(15, 78, 96, 0.18);
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: -40% -10% auto auto;
+            height: 180px;
+            width: 180px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.26), rgba(26, 188, 156, 0.2));
+            filter: blur(12px);
+            z-index: -1;
+        }
+
+        .hero-card h2 {
+            font-size: 1.2rem;
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .hero-card li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            color: rgba(11, 34, 54, 0.82);
+            font-size: 0.97rem;
+        }
+
+        .hero-card li span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 28px;
+            width: 28px;
+            border-radius: 999px;
+            background: rgba(26, 188, 156, 0.18);
+            color: var(--deep-teal);
+            font-weight: 700;
+        }
+
+        .progress-overview {
+            background: rgba(74, 144, 226, 0.08);
+        }
+
+        .section-heading {
+            max-width: 680px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section-heading p {
+            margin-top: 1rem;
+            font-size: 1.05rem;
+            color: rgba(11, 34, 54, 0.74);
+            line-height: 1.7;
+        }
+
+        .table-card {
+            margin-top: 2.6rem;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 24px;
+            box-shadow: 0 22px 42px rgba(74, 144, 226, 0.16);
+            overflow: hidden;
+        }
+
+        .table-title {
+            padding: 1.2rem 1.8rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--blue);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(74, 144, 226, 0.08);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .progress-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+        }
+
+        .progress-table caption {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .progress-table thead {
+            background: rgba(74, 144, 226, 0.1);
+        }
+
+        .progress-table th,
+        .progress-table td {
+            padding: 1rem 1.4rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            font-size: 0.96rem;
+            color: rgba(11, 34, 54, 0.82);
+            vertical-align: middle;
+        }
+
+        .progress-table th {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .progress-table tbody tr:last-child th,
+        .progress-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.86rem;
+        }
+
+        .status--review {
+            background: rgba(74, 144, 226, 0.16);
+            color: var(--blue);
+        }
+
+        .status--draft {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+        }
+
+        .status--published {
+            background: rgba(39, 174, 96, 0.16);
+            color: var(--green);
+        }
+
+        .progress {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-track {
+            position: relative;
+            flex: 1;
+            height: 12px;
+            border-radius: 999px;
+            background: rgba(148, 163, 184, 0.2);
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+            transition: width 0.3s ease;
+        }
+
+        .progress-value {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+
+
+
+                .product-focus {
+            background: rgba(26, 188, 156, 0.1);
+        }
+
+        .product-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+            align-items: center;
+        }
+
+        .product-meta {
+            position: relative;
+            padding: 2rem;
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(26, 188, 156, 0.84), rgba(74, 144, 226, 0.88));
+            color: white;
+            box-shadow: 0 30px 45px -18px rgba(11, 34, 54, 0.42);
+            display: grid;
+            gap: 1rem;
+        }
+
+        .product-meta .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        .product-meta input {
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.18);
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            color: white;
+            letter-spacing: 0.06em;
+        }
+
+        .product-meta input::placeholder {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .product-meta input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.6;
+        }
+
+        .product-meta .btn-secondary {
+            justify-content: center;
+            width: 100%;
+            border-color: rgba(255, 255, 255, 0.45);
+            color: white;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .product-meta .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.7);
+            color: white;
+            background: rgba(255, 255, 255, 0.24);
+        }
+
+        .product-copy h2 {
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            color: var(--dark);
+        }
+
+        .product-copy p {
+            margin-top: 1.2rem;
+            font-size: 1.03rem;
+            color: rgba(11, 34, 54, 0.76);
+            line-height: 1.75;
+        }.hero-checklist {
+            margin-top: 2rem;
+            display: grid;
+            gap: 0.75rem;
+            list-style: none;
+        }
+
+        .hero-checklist li {
+            position: relative;
+            padding-left: 1.6rem;
+            color: rgba(11, 34, 54, 0.78);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .hero-checklist li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            color: var(--teal);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .request-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .dpp-request-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-field {
+            display: grid;
+            gap: 0.35rem;
+        }
+
+        .form-field label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(11, 34, 54, 0.78);
+        }
+
+        .form-field label span {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 0.78rem;
+            margin-left: 0.2rem;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            color: var(--dark);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.18);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-actions {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .form-actions .btn-primary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: rgba(11, 34, 54, 0.65);
+        }
+        .dpp-spectrum {
+            background: rgba(74, 144, 226, 0.08);
+        }
+
+        .dpp-spectrum h2 {
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            color: var(--dark);
+        }
+
+        .dpp-spectrum__lead {
+            margin-top: 1rem;
+            font-size: 1.05rem;
+            color: rgba(11, 34, 54, 0.74);
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        .dpp-tier-grid {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1.6rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            align-items: stretch;
+        }
+
+        .tier-arrow {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .dpp-tier-grid {
+                grid-template-columns: 1fr auto 1fr auto 1fr;
+                gap: 1.4rem;
+            }
+
+            .tier-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tier-arrow::before {
+                content: "\2192";
+                font-size: 2rem;
+                color: rgba(26, 188, 156, 0.8);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .tier-arrow {
+                display: none;
+            }
+
+            .dpp-tier-card + .dpp-tier-card::before {
+                content: "\2193";
+                display: block;
+                font-size: 1.5rem;
+                color: rgba(26, 188, 156, 0.7);
+                margin: 1.2rem auto 0;
+                text-align: center;
+            }
+        }
+
+        .dpp-tier-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 24px;
+            border: 1px solid rgba(148, 163, 184, 0.26);
+            box-shadow: 0 25px 40px -18px rgba(11, 34, 54, 0.2);
+            padding: 2.2rem 2rem;
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .tier-card--efficace {
+            background: linear-gradient(160deg, rgba(74, 144, 226, 0.25), rgba(74, 144, 226, 0.05));
+            border-color: rgba(74, 144, 226, 0.4);
+            box-shadow: 0 28px 48px -20px rgba(74, 144, 226, 0.35);
+        }
+
+        .tier-card--avance {
+            background: linear-gradient(160deg, rgba(26, 188, 156, 0.22), rgba(26, 188, 156, 0.06));
+            border-color: rgba(26, 188, 156, 0.38);
+            box-shadow: 0 28px 48px -20px rgba(26, 188, 156, 0.32);
+        }
+
+        .tier-card--complete {
+            background: linear-gradient(160deg, rgba(39, 174, 96, 0.22), rgba(39, 174, 96, 0.06));
+            border-color: rgba(39, 174, 96, 0.34);
+            box-shadow: 0 28px 48px -20px rgba(39, 174, 96, 0.3);
+        }
+
+        .tier-card--efficace .tier-tag,
+        .tier-card--efficace .tier-intro {
+            background: linear-gradient(160deg, rgba(74, 144, 226, 0.35), rgba(74, 144, 226, 0.1));
+        }
+
+        .tier-card--efficace .tier-tag {
+            color: var(--dark);
+        }
+
+        .tier-card--efficace .tier-intro {
+            padding: 0.85rem 1.1rem;
+            border-radius: 16px;
+            color: rgba(11, 34, 54, 0.82);
+        }
+
+        .tier-card--avance .tier-tag,
+        .tier-card--avance .tier-intro {
+            background: linear-gradient(160deg, rgba(26, 188, 156, 0.32), rgba(26, 188, 156, 0.1));
+        }
+
+        .tier-card--avance .tier-tag {
+            color: var(--dark);
+        }
+
+        .tier-card--avance .tier-intro {
+            padding: 0.85rem 1.1rem;
+            border-radius: 16px;
+            color: rgba(11, 34, 54, 0.82);
+        }
+
+        .tier-card--complete .tier-tag,
+        .tier-card--complete .tier-intro {
+            background: linear-gradient(160deg, rgba(39, 174, 96, 0.32), rgba(39, 174, 96, 0.1));
+        }
+
+        .tier-card--complete .tier-tag {
+            color: var(--dark);
+        }
+
+        .tier-card--complete .tier-intro {
+            padding: 0.85rem 1.1rem;
+            border-radius: 16px;
+            color: rgba(11, 34, 54, 0.82);
+        }
+
+        .tier-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--teal), var(--blue));
+            color: rgb(255, 255, 255);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+        }
+
+        .tier-intro {
+            font-size: 0.98rem;
+            color: rgba(11, 34, 54, 0.78);
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .tier-list {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        .tier-list li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.6rem;
+            align-items: start;
+            color: rgba(11, 34, 54, 0.82);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 26px;
+            width: 26px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .status--on {
+            background: rgba(26, 188, 156, 0.18);
+            color: var(--teal);
+        }
+
+        .status--off {
+            background: rgba(148, 163, 184, 0.18);
+            color: rgba(51, 65, 85, 0.6);
+        }
+
+        .tier-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.3rem;
+            border-radius: 999px;
+            border: 1px solid rgba(74, 144, 226, 0.42);
+            color: var(--blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .tier-action:hover {
+            transform: translateY(-2px);
+            background: rgba(74, 144, 226, 0.12);
+            box-shadow: 0 12px 24px rgba(74, 144, 226, 0.2);
+        }
+        footer {
+            background: #041726;
+            color: rgba(255, 255, 255, 0.74);
+            padding: 3.2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-nav {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.72);
+            transition: color 0.2s ease;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .contact-card {
+            background: rgba(74, 144, 226, 0.1);
+            padding: 1.4rem 1.6rem;
+            border-radius: 18px;
+            border: 1px solid rgba(74, 144, 226, 0.18);
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .contact-card span {
+            font-weight: 600;
+            color: white;
+        }
+
+        @media (max-width: 960px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .tab-link--external {
+                flex: none;
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 720px) {
+            header {
+                position: static;
+            }
+
+            nav {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                padding-top: 4rem;
+            }
+
+            .tab-content {
+                padding: 1.8rem;
+            }
+
+            .dpp-cta {
+                padding: 1.6rem 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-radial" aria-hidden="true"></div>
+
+    <header>
+        <div class="nav-wrapper">
+            <a href="#accueil" class="logo">TID Passport</a>
+            <nav aria-label="Navigation principale">
+                <a href="#demande">Demande ajout DPP</a>
+                <a href="#dpp">DPP</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="nav-cta" href="#contact">Demander une démo</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="accueil">
+        <div class="container hero-grid" id="demande">
+            <div class="hero-text">
+                <span class="badge">Portail entreprises</span>
+                <h1>Déposez votre demande de passeport produit</h1>
+                <p>Centralisez les informations réglementaires et RSE de vos gammes en quelques minutes. Notre équipe sécurise la mise en conformité de votre Digital Product Passport pour vos clients B2B et distributeurs.</p>
+                <div class="actions">
+                    <a class="btn-primary" href="#demande-form">Soumettre un DPP</a>
+                    <a class="btn-secondary" href="#contact">Contacter un conseiller</a>
+                </div>
+                <ul class="hero-checklist">
+                    <li>Connexion sécurisée et accompagnement dédié par nos experts.</li>
+                    <li>Synchronisation possible avec vos données PIM, PLM et ERP.</li>
+                    <li>Publication du DPP validé sur votre vitrine produit.</li>
+                </ul>
+            </div>
+            <aside class="hero-card request-form" aria-label="Formulaire de demande de DPP">
+                <h2>Demande d'ajout de DPP</h2>
+                <form id="demande-form" class="dpp-request-form">
+                    <div class="form-field">
+                        <label for="company-name">Nom de l'entreprise</label>
+                        <input type="text" id="company-name" name="company-name" placeholder="Ex : Groupe Énergie TID">
+                    </div>
+                    <div class="form-field">
+                        <label for="gtin">GTIN du produit <span>(obligatoire)</span></label>
+                        <input type="text" id="gtin" name="gtin" required placeholder="Ex : 03216540098765">
+                    </div>
+                    <div class="form-field">
+                        <label for="product-link">Lien vers la fiche produit</label>
+                        <input type="url" id="product-link" name="product-link" placeholder="https://votre-site.com/produit">
+                    </div>
+                    <div class="form-field">
+                        <label for="pim-info">Informations PIM</label>
+                        <textarea id="pim-info" name="pim-info" rows="3" placeholder="Référence catalogue, attributs marketing, assets médias..."></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="plm-info">Informations PLM</label>
+                        <textarea id="plm-info" name="plm-info" rows="3" placeholder="Version produit, composants critiques, historiques modifications..."></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="erp-info">Informations ERP</label>
+                        <textarea id="erp-info" name="erp-info" rows="3" placeholder="Codes article, sites de production, volumes annuels..."></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="lca-info">Analyse du cycle de vie (LCA)</label>
+                        <textarea id="lca-info" name="lca-info" rows="3" placeholder="Résultats ACV, méthodologie, partenaires d'évaluation..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-primary" type="submit">Envoyer la demande</button>
+                        <p class="form-hint">Nous analysons votre dossier sous 48h ouvrées et revenons vers vous pour finaliser la mise en ligne.</p>
+                    </div>
+                </form>
+            </aside>
+        </div>
+    </section>
+
+        <section class="progress-overview" id="progression">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="badge">Tableau</span>
+                    <h2>Tableau de progression</h2>
+                    <p>Visualisez l'état d'avancement de vos passeports produits : chaque ligne indique le niveau de complétion et les données restantes à fournir.</p>
+                </div>
+                <div class="table-card">
+                    <div class="table-title">Nom compagnie</div>
+                    <div class="table-wrapper">
+                        <table class="progress-table">
+                            <caption class="sr-only">Progression des Digital Product Passports</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Produit</th>
+                                    <th scope="col">GTIN</th>
+                                    <th scope="col">Statut</th>
+                                    <th scope="col">Avancement</th>
+                                    <th scope="col">À compléter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">EcoFlow TID – Station modulaire</th>
+                                    <td>3514856915234</td>
+                                    <td><span class="status-pill status--review">Relecture conformité</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 82%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 82%;"></span>
+                                            </div>
+                                            <span class="progress-value">82%</span>
+                                        </div>
+                                    </td>
+                                    <td>Résultats ACV finaux et pièces jointes fournisseurs.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">PulseWave Solar – Module stockage</th>
+                                    <td>7645981200345</td>
+                                    <td><span class="status-pill status--draft">Brouillon</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 46%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 46%;"></span>
+                                            </div>
+                                            <span class="progress-value">46%</span>
+                                        </div>
+                                    </td>
+                                    <td>Données ERP (volumes annuels) et validations PLM.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">UrbanCharge Lite – Borne mobile</th>
+                                    <td>6123459871200</td>
+                                    <td><span class="status-pill status--published">Publié</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 100%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 100%;"></span>
+                                            </div>
+                                            <span class="progress-value">100%</span>
+                                        </div>
+                                    </td>
+                                    <td>Aucune action restante.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-focus" id="produit-specifique">
+            <div class="container product-focus-grid">
+                <div class="product-copy">
+                    <span class="badge">Spécification</span>
+                    <h2>Voir un produit spécifique</h2>
+                    <p>Identifiez un produit grâce à son identifiant unique pour vérifier sa complétude DPP, suivre les mises à jour et accéder aux ressources associées.</p>
+                </div>
+                <form class="product-meta" action="dpp.html" method="get">
+                    <label class="label" for="product-gtin">GTIN</label>
+                    <input type="text" id="product-gtin" name="gtin" placeholder="Ex : 1253458963251" value="1253458963251" autocomplete="off" />
+                    <p class="meta-hint">Renseignez le GTIN du produit pour afficher rapidement son statut DPP et accéder aux détails associés.</p>
+                    <button class="btn-secondary" type="submit">Ouvrir la fiche DPP</button>
+                </form>
+            </div>
+        </section>
+
+                <section class="dpp-spectrum" id="dpp">
+            <div class="container">
+                <h2>Cadre possible d'un DPP</h2>
+                <p class="dpp-spectrum__lead">Commencez par un passeport efficace pour être conforme rapidement, puis enrichissez-le progressivement jusqu'à une version complète qui couvre toute la chaîne de valeur.</p>
+                <div class="dpp-tier-grid">
+                    <article class="dpp-tier-card tier-card--efficace">
+                        <header class="tier-header">
+                            <span class="tier-tag">Efficace</span>
+                            <p class="tier-intro">Idéal pour démarrer en conformité sur les données clés, avec un périmètre maîtrisé.</p>
+                        </header>
+                        <ul class="tier-list">
+                            <li><span class="status status--on">&#10003;</span><span>Matières principales</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication</span></li>
+                            <li><span class="status status--off">&ndash;</span><span>Certifications détaillées</span></li>
+                            <li><span class="status status--off">&ndash;</span><span>Entretien &amp; réparation</span></li>
+                            <li><span class="status status--off">&ndash;</span><span>Fin de vie &amp; reprise</span></li>
+                        </ul>
+                        <a class="tier-action" href="dpp.html">Explorer le modèle</a>
+                    </article>
+                    <div class="tier-arrow" aria-hidden="true"></div>
+                    <article class="dpp-tier-card tier-card--avance">
+                        <header class="tier-header">
+                            <span class="tier-tag">Avancé</span>
+                            <p class="tier-intro">Étendez la couverture pour rassurer vos partenaires et piloter vos indicateurs ESG.</p>
+                        </header>
+                        <ul class="tier-list">
+                            <li><span class="status status--on">&#10003;</span><span>Matières détaillées &amp; provenances</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication &amp; indicateurs</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Certifications &amp; audits</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Entretien &amp; réparation guidés</span></li>
+                            <li><span class="status status--off">&ndash;</span><span>Fin de vie détaillée</span></li>
+                        </ul>
+                        <a class="tier-action" href="dpp.html">Voir les exigences</a>
+                    </article>
+                    <div class="tier-arrow" aria-hidden="true"></div>
+                    <article class="dpp-tier-card tier-card--complete">
+                        <header class="tier-header">
+                            <span class="tier-tag">Complète</span>
+                            <p class="tier-intro">Intégrez toute la chaîne de valeur et dépassez les attentes réglementaires et RSE.</p>
+                        </header>
+                        <ul class="tier-list">
+                            <li><span class="status status--on">&#10003;</span><span>Matières &amp; ACV complètes</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication détaillée</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Certifications, labels &amp; preuves</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Entretien, réparation &amp; pièces</span></li>
+                            <li><span class="status status--on">&#10003;</span><span>Fin de vie, reprise &amp; valorisation</span></li>
+                        </ul>
+                        <a class="tier-action" href="dpp.html">Consulter un exemple</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>TID PRODUCT</h3>
+                <p>Une vitrine alignée sur vos enjeux RSE et business.</p>
+            </div>
+            <div class="footer-nav">
+                <a href="#demande">Demande ajout DPP</a>
+                <a href="#dpp">Passeport digital</a>
+                <a href="#accueil">Retour en haut</a>
+            </div>
+            <div class="contact-card">
+                <span>Parlons-en</span>
+                <p>Email : contact@tid-product.com</p>
+                <p>Téléphone : +33 1 23 45 67 89</p>
+                <a class="btn-primary" href="mailto:contact@tid-product.com" style="justify-self: start;">Planifier une démo</a>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>
