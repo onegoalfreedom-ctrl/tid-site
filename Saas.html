@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offre SaaS TID</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #4A90E2;
+            --teal: #1ABC9C;
+            --slate: #334155;
+            --dark: #0B2236;
+            --surface: rgba(255, 255, 255, 0.9);
+            --border: rgba(148, 163, 184, 0.28);
+            --violet: #7F56D9;
+            --sun: #F4A261;
+            --aqua: #2EC4B6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            color: var(--dark);
+            background: radial-gradient(120% 120% at 10% 0%, rgba(79, 243, 193, 0.18), transparent 60%),
+                radial-gradient(100% 120% at 90% 0%, rgba(74, 144, 226, 0.2), transparent 55%),
+                #F4FAFE;
+            min-height: 100vh;
+            padding: 4rem 0;
+        }
+
+        main {
+            width: min(92%, 1180px);
+            margin: 0 auto;
+            display: grid;
+            gap: 4.5rem;
+        }
+
+        .back-nav {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 1.2rem;
+            border-radius: 999px;
+            background: rgba(74, 144, 226, 0.12);
+            color: var(--blue);
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: inset 0 0 0 1px rgba(74, 144, 226, 0.28);
+            transition: transform 0.18s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .back-button:hover,
+        .back-button:focus {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.22), rgba(26, 188, 156, 0.2));
+            box-shadow: inset 0 0 0 1px rgba(74, 144, 226, 0.4);
+        }
+
+        .page-section {
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 28px;
+            padding: 3.2rem clamp(1.6rem, 3vw, 3rem);
+            box-shadow: 0 24px 42px rgba(12, 74, 110, 0.12);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-section::after {
+            content: "";
+            position: absolute;
+            inset: -40% auto auto -25%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.12), transparent 65%);
+            z-index: -1;
+        }
+
+        .page-section.saas-plans {
+            margin-top: 1rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.14), rgba(46, 196, 182, 0.16));
+            border: 1px solid rgba(74, 144, 226, 0.28);
+        }
+
+        .page-section.saas-plans::after {
+            inset: auto -30% -35% auto;
+            background: radial-gradient(circle, rgba(127, 86, 217, 0.22), transparent 70%);
+        }
+
+        .section-header {
+            max-width: 780px;
+            margin-bottom: 2.6rem;
+        }
+
+        .section-header span {
+            display: inline-block;
+            font-size: 0.86rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: rgba(11, 34, 54, 0.55);
+            margin-bottom: 0.9rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--dark);
+        }
+
+        .section-header p {
+            margin-top: 1.1rem;
+            font-size: 1.05rem;
+            color: rgba(11, 34, 54, 0.7);
+            line-height: 1.7;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .value-card {
+            border-radius: 22px;
+            padding: 1.9rem 1.8rem;
+            display: grid;
+            gap: 0.9rem;
+            color: var(--dark);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6));
+            border: 1px solid rgba(180, 198, 215, 0.45);
+            box-shadow: 0 18px 38px rgba(15, 118, 110, 0.12);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .value-card:hover,
+        .value-card:focus-within {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 44px rgba(74, 144, 226, 0.18);
+        }
+
+        .value-card:nth-child(1) {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.18), rgba(74, 144, 226, 0.08));
+            border-color: rgba(74, 144, 226, 0.42);
+        }
+
+        .value-card:nth-child(2) {
+            background: linear-gradient(135deg, rgba(46, 196, 182, 0.2), rgba(46, 196, 182, 0.08));
+            border-color: rgba(46, 196, 182, 0.44);
+        }
+
+        .value-card:nth-child(3) {
+            background: linear-gradient(135deg, rgba(127, 86, 217, 0.18), rgba(127, 86, 217, 0.08));
+            border-color: rgba(127, 86, 217, 0.42);
+        }
+
+        .value-card:nth-child(4) {
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.18), rgba(244, 162, 97, 0.08));
+            border-color: rgba(244, 162, 97, 0.42);
+        }
+
+        .value-card h3 {
+            font-size: 1.12rem;
+        }
+
+        .value-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+            color: rgba(11, 34, 54, 0.8);
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .value-card p {
+            color: rgba(11, 34, 54, 0.78);
+            line-height: 1.65;
+            font-size: 0.98rem;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .plan-card {
+            border-radius: 26px;
+            padding: 2.2rem 2rem;
+            display: grid;
+            gap: 1.1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(74, 144, 226, 0.32);
+            box-shadow: 0 28px 52px rgba(15, 118, 110, 0.16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -18% -28% auto;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.18), transparent 68%);
+            z-index: -1;
+        }
+
+        .plan-card:nth-child(2) {
+            border-color: rgba(127, 86, 217, 0.4);
+            background: linear-gradient(135deg, rgba(127, 86, 217, 0.18), rgba(74, 144, 226, 0.1));
+        }
+
+        .plan-card:nth-child(2)::after {
+            background: radial-gradient(circle, rgba(127, 86, 217, 0.28), transparent 70%);
+        }
+
+        .plan-card:nth-child(3) {
+            border-color: rgba(244, 162, 97, 0.4);
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.18), rgba(244, 162, 97, 0.08));
+        }
+
+        .plan-card h3 {
+            font-size: 1.24rem;
+            color: var(--dark);
+        }
+
+        .plan-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+            color: rgba(11, 34, 54, 0.82);
+            line-height: 1.65;
+            font-size: 1rem;
+        }
+
+        .plan-card strong {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(11, 34, 54, 0.62);
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 2.4rem 0;
+            }
+
+            .page-section {
+                padding: 2.2rem 1.6rem;
+            }
+
+            .plan-grid {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <nav class="back-nav" aria-label="Navigation secondaire">
+            <a class="back-button" href="landing.html">&larr; Retour à la page principale</a>
+        </nav>
+
+        <section id="avantages-tid" class="page-section benefits">
+            <div class="section-header">
+                <span>Pourquoi TID</span>
+                <h2>Les avantages de choisir TID</h2>
+                <p>Nous combinons technologie, expertise et accompagnement pour offrir un passeport produit à la fois robuste, conforme et rentable.</p>
+            </div>
+            <div class="value-grid">
+                <article class="value-card">
+                    <h3>Expérience concrète</h3>
+                    <p>Des projets pilotes déployés dans l'électronique, la mobilité et les biens durables avec retour sur investissement mesurable dès la première année.</p>
+                </article>
+                <article class="value-card">
+                    <h3>Architecture évolutive</h3>
+                    <ul>
+                        <li>Microservices modulaires hébergés localement ou dans le cloud souverain.</li>
+                        <li>Catalogue d'API documentées et prêtes à intégrer vos outils métiers.</li>
+                        <li>Gestion fine des droits d'accès et auditabilité complète.</li>
+                    </ul>
+                </article>
+                <article class="value-card">
+                    <h3>Fiabilité et sécurité</h3>
+                    <ul>
+                        <li>Chiffrement des données sensibles, traçabilité blockchain optionnelle.</li>
+                        <li>Plan de continuité et supervision 24/7.</li>
+                        <li>Certifications ISO 27001 et alignement NIST en cours d'audit.</li>
+                    </ul>
+                </article>
+                <article class="value-card">
+                    <h3>Partenariat durable</h3>
+                    <p>Un interlocuteur unique, des comités stratégiques trimestriels et des indicateurs de performance partagés pour piloter vos ambitions ESG.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="offre-saas" class="page-section saas-plans">
+            <div class="section-header">
+                <span>Solutions SaaS</span>
+                <h2>Vos options pour déployer le passeport produit en mode SaaS</h2>
+                <p>Choisissez le niveau d'accompagnement adapté à votre maturité numérique et à vos objectifs de conformité : chaque formule reste évolutive pour suivre vos ambitions.</p>
+            </div>
+            <div class="plan-grid">
+                <article class="plan-card">
+                    <strong>Essentiel</strong>
+                    <h3>Démarrer sereinement</h3>
+                    <ul>
+                        <li>Modules clés du passeport produit prêts à l'emploi.</li>
+                        <li>Intégrations de base avec vos systèmes métiers.</li>
+                        <li>Support de mise en route et ateliers d'adoption.</li>
+                    </ul>
+                </article>
+                <article class="plan-card">
+                    <strong>Premium</strong>
+                    <h3>Accélérer vos cas d'usage</h3>
+                    <ul>
+                        <li>Automatisation avancée des workflows et API étendue.</li>
+                        <li>Tableaux de bord personnalisés pour chaque équipe.</li>
+                        <li>Support prioritaire et comité stratégique trimestriel.</li>
+                    </ul>
+                </article>
+                <article class="plan-card">
+                    <strong>Entreprise</strong>
+                    <h3>Industrialiser à grande échelle</h3>
+                    <ul>
+                        <li>Architecture multi-entités et gouvernance granulaire des accès.</li>
+                        <li>Scénarios de conformité sur mesure et reporting ESG.</li>
+                        <li>Success manager dédié et feuille de route co-construite.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
