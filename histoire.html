@@ -1,12 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang='fr'>
+<html lang="fr">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TID - Notre histoire</title>
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap' rel='stylesheet'>
     <style>
         :root {
             --blue: #4A90E2;
@@ -25,450 +22,88 @@
         body {
             font-family: 'Manrope', 'Segoe UI', sans-serif;
             color: var(--dark);
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(26, 188, 156, 0.1));
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.12), rgba(26, 188, 156, 0.12));
             min-height: 100vh;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .background-radial {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(70% 60% at 50% -20%, rgba(74, 144, 226, 0.14), transparent);
-            z-index: -10;
-        }
-
-        header {
-            backdrop-filter: blur(14px);
-            background: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid rgba(51, 65, 85, 0.12);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .nav-wrapper {
-            width: min(92%, 1120px);
-            margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            justify-content: space-between;
-            padding: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            font-weight: 700;
-            color: var(--blue);
-            letter-spacing: 0.08em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            color: var(--slate);
-            border-bottom: 2px solid transparent;
-            padding-bottom: 0.2rem;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--blue);
-            border-color: var(--blue);
-        }
-
-        .return-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-            color: var(--blue);
+            justify-content: center;
+            padding: 2rem;
         }
 
         main {
-            padding-bottom: 4rem;
-        }
-
-        section {
-            padding: 4.8rem 0;
-        }
-
-        .container {
-            width: min(92%, 1120px);
-            margin: 0 auto;
-        }
-
-        .hero {
-            padding-top: 4rem;
-        }
-
-        .hero-inner {
-            display: grid;
-            gap: 2.4rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.4rem, 5vw, 3.6rem);
-            line-height: 1.05;
-            color: var(--dark);
-        }
-
-        .hero p {
-            margin-top: 1.2rem;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: rgba(11, 34, 54, 0.78);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.4rem;
-            margin-top: 2.4rem;
-        }
-
-        .stat-card {
+            width: min(92%, 520px);
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            border: 1px solid rgba(148, 163, 184, 0.24);
-            padding: 1.6rem 1.5rem;
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .stat-card span {
-            font-size: 0.82rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: rgba(11, 34, 54, 0.6);
-            font-weight: 600;
-        }
-
-        .stat-card strong {
-            font-size: 1.15rem;
-            color: var(--dark);
-        }
-
-        .timeline-section .section-head {
-            max-width: 720px;
-            margin-bottom: 2.4rem;
-        }
-
-        .timeline {
-            border-left: 2px solid rgba(74, 144, 226, 0.32);
-            padding-left: 1.5rem;
-            display: grid;
-            gap: 1.8rem;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 0.6rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -1.72rem;
-            top: 0.3rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue), var(--teal));
-            box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.18);
-        }
-
-        .timeline-item h3 {
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-
-        .timeline-item p {
-            margin-top: 0.4rem;
-            color: rgba(11, 34, 54, 0.78);
-            line-height: 1.6;
-        }
-
-        .values {
-            background: rgba(255, 255, 255, 0.9);
-            border-top: 1px solid rgba(148, 163, 184, 0.2);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .values h2 {
-            font-size: clamp(2rem, 4vw, 2.6rem);
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.4rem;
-            margin-top: 2rem;
-        }
-
-        .value-card {
-            background: rgba(4, 23, 38, 0.92);
-            color: rgba(255, 255, 255, 0.88);
-            border-radius: 20px;
-            padding: 1.8rem 1.6rem;
-            display: grid;
-            gap: 0.7rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .value-card h3 {
-            color: white;
-            font-size: 1.08rem;
-        }
-
-        .value-card p {
-            font-size: 0.96rem;
-            line-height: 1.6;
-        }
-
-        .today {
-            padding-bottom: 4.8rem;
-        }
-
-        .today-card {
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 24px;
-            border: 1px solid rgba(148, 163, 184, 0.26);
-            padding: 2.4rem 2.2rem;
-            display: grid;
-            gap: 1.2rem;
-            box-shadow: 0 24px 42px rgba(11, 34, 54, 0.12);
-        }
-
-        .today-card h2 {
-            font-size: 2.1rem;
-            color: var(--blue);
-        }
-
-        .cta {
-            padding: 0 0 5rem;
-        }
-
-        .cta-card {
-            width: min(92%, 640px);
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--blue), var(--teal));
-            color: white;
-            border-radius: 26px;
-            padding: 2.4rem 2.6rem;
-            display: grid;
-            gap: 1rem;
+            border: 1px solid rgba(51, 65, 85, 0.12);
+            border-radius: 18px;
+            padding: 3rem 2.5rem;
             text-align: center;
-            box-shadow: 0 26px 44px rgba(26, 188, 156, 0.24);
+            box-shadow: 0 25px 45px rgba(15, 23, 42, 0.08);
+            backdrop-filter: blur(16px);
         }
 
-        .cta-actions {
+        h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.2rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--slate);
+        }
+
+        .actions {
+            margin-top: 2rem;
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
-            margin-top: 0.6rem;
         }
 
-        .cta-actions a {
+        a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-            padding: 0.7rem 1.5rem;
+            padding: 0.85rem 1.6rem;
             border-radius: 999px;
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.65);
-            color: white;
-            transition: transform 0.15s ease, background 0.2s ease;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .cta-actions a:hover,
-        .cta-actions a:focus {
+        a:first-of-type {
+            background: var(--blue);
+            color: #fff;
+            box-shadow: 0 12px 24px rgba(74, 144, 226, 0.24);
+        }
+
+        a:first-of-type:hover,
+        a:first-of-type:focus {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 30px rgba(74, 144, 226, 0.28);
         }
 
-        footer {
-            background: #041726;
-            color: rgba(255, 255, 255, 0.7);
-            padding: 3rem 0 2rem;
+        a:last-of-type {
+            background: #fff;
+            color: var(--teal);
+            border: 1px solid rgba(26, 188, 156, 0.35);
         }
 
-        footer .container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.4rem;
-        }
-
-        footer p,
-        footer a {
-            font-size: 0.95rem;
-        }
-
-        footer a {
-            color: rgba(255, 255, 255, 0.82);
-        }
-
-        @media (max-width: 720px) {
-            header {
-                position: static;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .hero {
-                padding-top: 2.8rem;
-            }
-
-            .today-card h2 {
-                font-size: 1.8rem;
-            }
+        a:last-of-type:hover,
+        a:last-of-type:focus {
+            transform: translateY(-2px);
+            border-color: rgba(26, 188, 156, 0.55);
         }
     </style>
 </head>
 <body>
-    <div class='background-radial' aria-hidden='true'></div>
-
-    <header>
-        <div class='nav-wrapper'>
-            <a href='landing.html#accueil' class='logo'>TID Passeport</a>
-            <nav class='nav-links' aria-label='Navigation'>
-                <a href='landing.html#tid'>Retour au DPP</a>
-                <a href='landing.html#pourquoi-tid'>Pourquoi TID</a>
-                <a href='index.html#contact'>Contact</a>
-            </nav>
-            <a class='return-link' href='landing.html'>&larr; Revenir à la page DPP</a>
-        </div>
-    </header>
-
     <main>
-        <section class='hero' id='introduction'>
-            <div class='container hero-inner'>
-                <div>
-                    <h1>Une histoire d'engagement pour la confiance produit</h1>
-                    <p>Depuis ses débuts, TID accompagne les organisations qui souhaitent rendre leurs chaînes de valeur plus transparentes, responsables et durables. Notre parcours est celui d'une équipe qui a fait du passeport numérique de produit un véritable levier de transformation.</p>
-                </div>
-                <div class='hero-stats'>
-                    <div class='stat-card'>
-                        <span>Fondation</span>
-                        <strong>2015 · Montréal</strong>
-                        <p>Naissance d'une cellule dédiée à la traçabilité et aux identités numériques de produits.</p>
-                    </div>
-                    <div class='stat-card'>
-                        <span>Écosystème</span>
-                        <strong>40+ partenaires</strong>
-                        <p>Industriels, distributeurs et organismes publics répartis en Europe et en Amérique du Nord.</p>
-                    </div>
-                    <div class='stat-card'>
-                        <span>Impact</span>
-                        <strong>4 secteurs clés</strong>
-                        <p>Électronique, mobilité, textile technique et biens durables accompagnés vers le DPP.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class='timeline-section' id='timeline'>
-            <div class='container'>
-                <div class='section-head'>
-                    <h2>Les jalons de TID</h2>
-                    <p>Notre évolution reflète l'accélération des exigences de transparence produit. Chaque étape consolide notre expertise et notre réseau.</p>
-                </div>
-                <div class='timeline'>
-                    <div class='timeline-item'>
-                        <h3>2015 · Création du laboratoire TID</h3>
-                        <p>Une équipe pluridisciplinaire se réunit pour connecter données produits, matériaux responsables et identité numérique.</p>
-                    </div>
-                    <div class='timeline-item'>
-                        <h3>2017 · Premiers pilotes industriels</h3>
-                        <p>Déploiement de passeports prototypes dans l'électronique et la mobilité, avec une intégration ERP/PLM complète.</p>
-                    </div>
-                    <div class='timeline-item'>
-                        <h3>2020 · Plateforme TID Passeport</h3>
-                        <p>Lancement de notre plateforme modulaire cloud et on-premise, conçue pour répondre aux exigences européennes émergentes.</p>
-                    </div>
-                    <div class='timeline-item'>
-                        <h3>2023 · Écosystème partenaires</h3>
-                        <p>Accords stratégiques avec des acteurs du recyclage, des réparateurs agréés et des autorités de certification.</p>
-                    </div>
-                    <div class='timeline-item'>
-                        <h3>2025 · Expansion réglementaire</h3>
-                        <p>Mise en place de hubs de données sectoriels et accompagnement des clients dans les obligations DPP européennes et nord-américaines.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class='values' id='vision'>
-            <div class='container'>
-                <h2>Notre ADN</h2>
-                <p>Nos convictions guident chaque projet DPP que nous portons.</p>
-                <div class='values-grid'>
-                    <article class='value-card'>
-                        <h3>Transparence utile</h3>
-                        <p>Nous transformons la donnée produit en information exploitable par les fabricants, les partenaires et les consommateurs.</p>
-                    </article>
-                    <article class='value-card'>
-                        <h3>Innovation responsable</h3>
-                        <p>Nos solutions privilégient les architectures ouvertes, la souveraineté des données et l'efficience énergétique.</p>
-                    </article>
-                    <article class='value-card'>
-                        <h3>Coalition humaine</h3>
-                        <p>Chaque projet s'appuie sur des communautés métiers actives, des programmes de formation et un accompagnement rapproché.</p>
-                    </article>
-                    <article class='value-card'>
-                        <h3>Mesure d'impact</h3>
-                        <p>Nous relions KPIs ESG, objectifs réglementaires et valeur business pour démontrer les résultats du DPP.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class='today' id='future'>
-            <div class='container'>
-                <div class='today-card'>
-                    <h2>TID aujourd'hui</h2>
-                    <p>Nous opérons des passeports numériques pour des clients internationaux, avec des antennes à Montréal, Paris et Munich. Notre feuille de route 2026 s'articule autour de la circularité avancée, de l'orchestration des preuves réglementaires et de l'expérience utilisateur.</p>
-                    <p>En partenariat avec des centres de recherche, nous développons des modèles de données sectoriels ouverts et des outils d'analyse permettant de mesurer l'impact de chaque décision sur l'ensemble du cycle de vie.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class='cta'>
-            <div class='cta-card'>
-                <h2>Prêt à écrire les prochains chapitres avec nous ?</h2>
-                <p>Découvrons comment notre histoire peut renforcer la vôtre grâce au passeport numérique de produit.</p>
-                <div class='cta-actions'>
-                    <a href='landing.html#pourquoi-tid'>Retourner au DPP</a>
-                    <a href='index.html#contact'>Planifier une rencontre</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class='container'>
-            <p>TID Passeport · Depuis 2015</p>
-            <p>Contact : <a href='mailto:contact@tid.com'>contact@tid.com</a> · +1 514 555 0199</p>
+        <h1>Page en construction</h1>
+        <p>Nous travaillons actuellement sur cette section pour partager notre histoire en detail. Revenez bientot pour decouvrir la suite.</p>
+        <div class="actions">
+            <a href="landing.html">Retour a la page principale</a>
+            <a href="index.html#contact">Contactez-nous</a>
         </div>
-    </footer>
+    </main>
 </body>
 </html>
-
-

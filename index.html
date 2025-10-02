@@ -595,199 +595,54 @@
             max-width: 720px;
         }
 
-        .dpp-tier-grid {
-            margin-top: 3rem;
-            display: grid;
-            gap: 1.6rem;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            align-items: stretch;
-        }
-
-        .tier-arrow {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .dpp-tier-grid {
-                grid-template-columns: 1fr auto 1fr auto 1fr;
-                gap: 1.4rem;
-            }
-
-            .tier-arrow {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .tier-arrow::before {
-                content: "\2192";
-                font-size: 2rem;
-                color: rgba(26, 188, 156, 0.8);
-            }
-        }
-
-        @media (max-width: 1023px) {
-            .tier-arrow {
-                display: none;
-            }
-
-            .dpp-tier-card + .dpp-tier-card::before {
-                content: "\2193";
-                display: block;
-                font-size: 1.5rem;
-                color: rgba(26, 188, 156, 0.7);
-                margin: 1.2rem auto 0;
-                text-align: center;
-            }
-        }
-
-        .dpp-tier-card {
+        .dpp-spectrum-box {
+            margin-top: 2.5rem;
             background: rgba(255, 255, 255, 0.92);
             border-radius: 24px;
-            border: 1px solid rgba(148, 163, 184, 0.26);
-            box-shadow: 0 25px 40px -18px rgba(11, 34, 54, 0.2);
-            padding: 2.2rem 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            box-shadow: 0 24px 38px -20px rgba(11, 34, 54, 0.22);
+            padding: 2.4rem 2.2rem;
             display: grid;
-            gap: 1.4rem;
+            gap: 1.8rem;
+            max-width: 760px;
+            margin-inline: auto;
         }
 
-        .tier-card--efficace {
-            background: linear-gradient(160deg, rgba(74, 144, 226, 0.25), rgba(74, 144, 226, 0.05));
-            border-color: rgba(74, 144, 226, 0.4);
-            box-shadow: 0 28px 48px -20px rgba(74, 144, 226, 0.35);
+        .dpp-spectrum-box .dpp-block + .dpp-block {
+            border-top: 1px solid rgba(148, 163, 184, 0.24);
+            padding-top: 1.4rem;
         }
 
-        .tier-card--avance {
-            background: linear-gradient(160deg, rgba(26, 188, 156, 0.22), rgba(26, 188, 156, 0.06));
-            border-color: rgba(26, 188, 156, 0.38);
-            box-shadow: 0 28px 48px -20px rgba(26, 188, 156, 0.32);
-        }
-
-        .tier-card--complete {
-            background: linear-gradient(160deg, rgba(39, 174, 96, 0.22), rgba(39, 174, 96, 0.06));
-            border-color: rgba(39, 174, 96, 0.34);
-            box-shadow: 0 28px 48px -20px rgba(39, 174, 96, 0.3);
-        }
-
-        .tier-card--efficace .tier-tag,
-        .tier-card--efficace .tier-intro {
-            background: linear-gradient(160deg, rgba(74, 144, 226, 0.35), rgba(74, 144, 226, 0.1));
-        }
-
-        .tier-card--efficace .tier-tag {
+        .dpp-spectrum-box h3 {
+            font-size: 1.05rem;
             color: var(--dark);
-        }
-
-        .tier-card--efficace .tier-intro {
-            padding: 0.85rem 1.1rem;
-            border-radius: 16px;
-            color: rgba(11, 34, 54, 0.82);
-        }
-
-        .tier-card--avance .tier-tag,
-        .tier-card--avance .tier-intro {
-            background: linear-gradient(160deg, rgba(26, 188, 156, 0.32), rgba(26, 188, 156, 0.1));
-        }
-
-        .tier-card--avance .tier-tag {
-            color: var(--dark);
-        }
-
-        .tier-card--avance .tier-intro {
-            padding: 0.85rem 1.1rem;
-            border-radius: 16px;
-            color: rgba(11, 34, 54, 0.82);
-        }
-
-        .tier-card--complete .tier-tag,
-        .tier-card--complete .tier-intro {
-            background: linear-gradient(160deg, rgba(39, 174, 96, 0.32), rgba(39, 174, 96, 0.1));
-        }
-
-        .tier-card--complete .tier-tag {
-            color: var(--dark);
-        }
-
-        .tier-card--complete .tier-intro {
-            padding: 0.85rem 1.1rem;
-            border-radius: 16px;
-            color: rgba(11, 34, 54, 0.82);
-        }
-
-        .tier-tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1.1rem;
-            border-radius: 999px;
-            background: linear-gradient(135deg, var(--teal), var(--blue));
-            color: rgb(255, 255, 255);
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            font-size: 0.78rem;
+            font-weight: 700;
         }
 
-        .tier-intro {
-            font-size: 0.98rem;
-            color: rgba(11, 34, 54, 0.78);
-            line-height: 1.65;
-            text-align: center;
-        }
-
-        .tier-list {
+        .dpp-spectrum-box ul {
             list-style: none;
             display: grid;
-            gap: 0.7rem;
-            font-size: 0.95rem;
+            gap: 0.65rem;
+            margin-top: 0.8rem;
         }
 
-        .tier-list li {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0.6rem;
-            align-items: start;
+        .dpp-spectrum-box li {
+            position: relative;
+            padding-left: 1.55rem;
+            font-size: 0.98rem;
+            line-height: 1.55;
             color: rgba(11, 34, 54, 0.82);
         }
 
-        .status {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            height: 26px;
-            width: 26px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        .status--on {
-            background: rgba(26, 188, 156, 0.18);
+        .dpp-spectrum-box li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
             color: var(--teal);
-        }
-
-        .status--off {
-            background: rgba(148, 163, 184, 0.18);
-            color: rgba(51, 65, 85, 0.6);
-        }
-
-        .tier-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.3rem;
-            border-radius: 999px;
-            border: 1px solid rgba(74, 144, 226, 0.42);
-            color: var(--blue);
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
-        }
-
-        .tier-action:hover {
-            transform: translateY(-2px);
-            background: rgba(74, 144, 226, 0.12);
-            box-shadow: 0 12px 24px rgba(74, 144, 226, 0.2);
+            font-size: 0.9rem;
         }
         footer {
             background: #041726;
@@ -1016,8 +871,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
+                    </div></div>
             </div>
         </section>
 
@@ -1039,50 +893,72 @@
 
                 <section class="dpp-spectrum" id="dpp">
             <div class="container">
-                <h2>Cadre possible d'un DPP</h2>
-                <p class="dpp-spectrum__lead">Commencez par un passeport efficace pour être conforme rapidement, puis enrichissez-le progressivement jusqu'à une version complète qui couvre toute la chaîne de valeur.</p>
-                <div class="dpp-tier-grid">
-                    <article class="dpp-tier-card tier-card--efficace">
-                            <span class="tier-tag">Efficace</span>
-                            <p class="tier-intro">Idéal pour démarrer en conformité sur les données clés, avec un périmètre maîtrisé.</p>
-                        </header>
-                        <ul class="tier-list">
-                            <li><span class="status status--on">&#10003;</span><span>Matières principales</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication</span></li>
-                            <li><span class="status status--off">&ndash;</span><span>Certifications détaillées</span></li>
-                            <li><span class="status status--off">&ndash;</span><span>Entretien &amp; réparation</span></li>
-                            <li><span class="status status--off">&ndash;</span><span>Fin de vie &amp; reprise</span></li>
+                <h2>Panorama des donn&eacute;es d'un DPP textile</h2>
+                <p class="dpp-spectrum__lead">Ces informations renforcent la transparence produit et nourrissent les exigences r&eacute;glementaires comme les attentes clients.</p>
+                <div class="dpp-spectrum-box">
+                    <div class="dpp-block">
+                        <h3>Composition &amp; mati&egrave;res</h3>
+                        <ul>
+                            <li>Pourcentage exact de chaque fibre textile</li>
+                            <li>Taux de mati&egrave;res recycl&eacute;es pr&eacute;sentes dans le produit</li>
+                            <li>Origine des mati&egrave;res premi&egrave;res (option avanc&eacute;e, ex. ferme de moutons pour la laine)</li>
+                            <li>Pr&eacute;sence de substances dangereuses au-del&agrave; du seuil de 0,1&nbsp;% (conformit&eacute; &agrave; la loi AGEC en France) optionnel</li>
                         </ul>
-                        <a class="tier-action" href="dpp efficace.html">Explorer le modèle</a>
-                    </article>
-                    <div class="tier-arrow" aria-hidden="true"></div>
-                    <article class="dpp-tier-card tier-card--avance">
-                            <span class="tier-tag">Avancé</span>
-                            <p class="tier-intro">Étendez la couverture pour rassurer vos partenaires et piloter vos indicateurs ESG.</p>
-                        </header>
-                        <ul class="tier-list">
-                            <li><span class="status status--on">&#10003;</span><span>Matières détaillées &amp; provenances</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication &amp; indicateurs</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Certifications &amp; audits</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Entretien &amp; réparation guidés</span></li>
-                            <li><span class="status status--off">&ndash;</span><span>Fin de vie détaillée</span></li>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Tra&ccedil;abilit&eacute; &amp; fabrication</h3>
+                        <ul>
+                            <li>Origine des mat&eacute;riaux (pays, fournisseur)</li>
+                            <li>Pays de fabrication du produit fini</li>
+                            <li>Pays des principales &eacute;tapes de production (tissage ou tricotage, teinture ou impression, assemblage/confection)</li>
+                            <li>Adresse de l&rsquo;usine de confection (option avanc&eacute;e)</li>
+                            <li>Informations sociales de l&rsquo;usine : nombre d&rsquo;employ&eacute;s, proportion hommes/femmes, normes sociales en vigueur, r&eacute;sultats d&rsquo;audit</li>
                         </ul>
-                        <a class="tier-action" href="dpp.html">Voir les exigences</a>
-                    </article>
-                    <div class="tier-arrow" aria-hidden="true"></div>
-                    <article class="dpp-tier-card tier-card--complete">
-                            <span class="tier-tag">Complète</span>
-                            <p class="tier-intro">Intégrez toute la chaîne de valeur et dépassez les attentes réglementaires et RSE.</p>
-                        </header>
-                        <ul class="tier-list">
-                            <li><span class="status status--on">&#10003;</span><span>Matières &amp; ACV complètes</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Chaîne de fabrication détaillée</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Certifications, labels &amp; preuves</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Entretien, réparation &amp; pièces</span></li>
-                            <li><span class="status status--on">&#10003;</span><span>Fin de vie, reprise &amp; valorisation</span></li>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Logistique &amp; transport</h3>
+                        <ul>
+                            <li>Distances parcourues entre les diff&eacute;rentes &eacute;tapes de production et d&rsquo;assemblage</li>
+                            <li>Informations sur le transport des mati&egrave;res premi&egrave;res jusqu&rsquo;&agrave; l&rsquo;usine</li>
+                            <li>Mode de transport utilis&eacute; &agrave; chaque &eacute;tape (camion, bateau, train, avion)</li>
                         </ul>
-                        <a class="tier-action" href="dpp.html">Consulter un exemple</a>
-                    </article>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Empreinte &amp; ressources</h3>
+                        <ul>
+                            <li>Consommation de ressources naturelles (eau, &eacute;nergie, mati&egrave;res premi&egrave;res)</li>
+                            <li>Empreinte carbone (CO<sub>2</sub> &eacute;mis lors de la production et du transport)</li>
+                            <li>Instructions de fin de vie du produit (tri, recyclage, r&eacute;utilisation, compostage si applicable)</li>
+                            <li>Transparence sur la r&eacute;partition des co&ucirc;ts (mati&egrave;res premi&egrave;res, composants, fabrication, production, transport)</li>
+                        </ul>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Offre &amp; production</h3>
+                        <ul>
+                            <li>Nombre total d&rsquo;unit&eacute;s produites pour une m&ecirc;me r&eacute;f&eacute;rence (&eacute;dition limit&eacute;e ou production de masse)</li>
+                            <li>Possibilit&eacute; de grandeur (gamme de tailles)</li>
+                            <li>Possibilit&eacute; de couleur (variantes disponibles)</li>
+                            <li>Donn&eacute;es illustrant la taille et le mode de fonctionnement de l&rsquo;entreprise (petite s&eacute;rie artisanale ou grande production industrielle)</li>
+                            <li>Traitements appliqu&eacute;s (ex. teinture, appr&ecirc;t)</li>
+                            <li>Qualit&eacute;s sp&eacute;cifiques (ex. fibre longue, r&eacute;sistance)</li>
+                        </ul>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Conformit&eacute; &amp; preuves</h3>
+                        <ul>
+                            <li>Certificats de transaction (preuve d&rsquo;achat de mati&egrave;res premi&egrave;res certifi&eacute;es)</li>
+                            <li>Labels officiels (Oeko-Tex, GOTS, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="dpp-block">
+                        <h3>Maintenance &amp; fin de vie</h3>
+                        <ul>
+                            <li>Programmes de maintenance et de r&eacute;paration disponibles (kits, tutoriels, partenaires)</li>
+                            <li>Proc&eacute;dures de s&eacute;paration des fibres ou composants pour faciliter le recyclage</li>
+                            <li>Points de collecte ou partenaires de reprise identifi&eacute;s</li>
+                            <li>Guides de r&eacute;utilisation ou de reconditionnement pour prolonger la dur&eacute;e de vie</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1110,3 +986,4 @@
 
     </body>
 </html>
+
