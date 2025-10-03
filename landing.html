@@ -78,11 +78,23 @@
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
             font-weight: 700;
             font-size: 1.1rem;
             letter-spacing: 0.08em;
             text-decoration: none;
             color: var(--blue);
+        }
+
+        .logo img {
+            height: 52px;
+            width: auto;
+        }
+
+        .logo span {
+            display: inline-block;
         }
 
         .nav-links {
@@ -715,7 +727,7 @@
 
     <header>
         <div class="nav-wrapper">
-            <a href="#accueil" class="logo">TID Passeport</a>
+            <a href="#accueil" class="logo"><img src="image/logo blanc.png" alt="Logo TID" /><span>TID Passeport</span></a>
             <nav class="nav-links" aria-label="Navigation principale">
                 <a href="#tid">TID</a>
                 <a href="#dpp-definition">DPP</a>
@@ -839,7 +851,7 @@
                     <article class="pillar-card">
                         <span>Sociologique</span>
                         <h3>Confiance des citoyens</h3>
-                        <p>Les consommateurs exigent la preuve de l'origine, de la réparabilité et des engagements sociaux avant d'acheter.</p>
+                        <p>Les consommateurs exigent désormais la vérité derrière leurs achats : l’écoblanchiment ne sera plus une préoccupation.</p>
                     </article>
                     <article class="pillar-card">
                         <span>Technologique</span>

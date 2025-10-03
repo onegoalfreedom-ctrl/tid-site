@@ -69,11 +69,23 @@
         }
 
         .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
             font-weight: 700;
             font-size: 1.1rem;
             color: var(--blue);
             text-decoration: none;
             letter-spacing: 0.06em;
+        }
+
+        .logo img {
+            height: 52px;
+            width: auto;
+        }
+
+        .logo span {
+            display: inline-block;
         }
 
         nav {
@@ -738,7 +750,7 @@
 
     <header>
         <div class="nav-wrapper">
-            <a href="#accueil" class="logo">TID Passport</a>
+            <a href="#accueil" class="logo"><img src="image/logo color.png" alt="Logo TID" /><span>TID Passport</span></a>
             <nav aria-label="Navigation principale">
                 <a href="#demande">Demande ajout DPP</a>
                 <a href="#dpp">DPP</a>
