@@ -364,6 +364,14 @@
             border-radius: 12px;
         }
 
+        .transport-map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 12px 28px rgba(11, 34, 54, 0.16);
+        }
+
         .transport-map .map-caption {
             margin-top: 0.9rem;
             font-size: 0.92rem;
@@ -820,43 +828,7 @@
                     </dl>
                     <p style="color: rgba(11,34,54,0.76); line-height: 1.6;">Ce passeport est conforme aux exigences europ&eacute;ennes Digital Product Passport et s'int&egrave;gre &agrave; vos tableaux de bord RSE.</p>
                     <figure class="transport-map" aria-label="Trajet logistique France &rarr; &Eacute;tats-Unis &rarr; Canada">
-                        <svg viewBox="0 0 420 240" role="img" aria-labelledby="transport-map-title">
-                            <title id="transport-map-title">Flux de transport : France vers &Eacute;tats-Unis puis Canada</title>
-                            <defs>
-                                <pattern id="mapGrid" width="30" height="30" patternUnits="userSpaceOnUse">
-                                    <rect width="30" height="30" fill="rgba(255,255,255,0)" />
-                                    <path d="M30 0 H0 V30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.6" />
-                                </pattern>
-                                <linearGradient id="oceanGradient" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#9fd6ff" />
-                                    <stop offset="100%" stop-color="#66b1e6" />
-                                </linearGradient>
-                                <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
-                                    <path d="M0,0 L0,6 L6,3 z" fill="#e74c3c" />
-                                </marker>
-                            </defs>
-                            <rect x="0" y="0" width="420" height="240" fill="url(#oceanGradient)" rx="16" />
-                            <rect x="0" y="0" width="420" height="240" fill="url(#mapGrid)" rx="16" opacity="0.35" />
-                            <g fill="#cbe7ca" stroke="rgba(53,128,103,0.45)" stroke-width="1.1">
-                                <path d="M54 155 Q30 123 52 100 Q86 62 140 72 Q195 82 214 120 Q226 144 210 170 Q188 210 142 204 Q78 198 54 155 Z" />
-                                <path d="M210 132 Q238 92 290 90 Q340 88 368 112 Q404 143 388 176 Q372 210 318 208 Q250 204 220 170 Q204 151 210 132 Z" />
-                                <path d="M320 70 Q340 54 360 56 Q382 58 394 72 Q404 86 394 98 Q372 120 340 112 Q318 106 320 70 Z" />
-                                <path d="M72 190 Q110 208 150 210 Q186 212 210 190 Q240 164 248 182 Q256 202 228 220 Q200 238 150 232 Q108 228 80 210 Q64 198 72 190 Z" opacity="0.65" />
-                            </g>
-                            <g fill="#add8a6" stroke="rgba(53,128,103,0.25)" stroke-width="0.8">
-                                <path d="M68 148 Q46 124 62 104 Q90 74 140 80 Q182 86 200 118 Q210 138 198 160 Q180 194 144 190 Q94 186 68 148 Z" />
-                                <path d="M220 132 Q246 102 294 100 Q332 100 356 118 Q386 140 372 170 Q358 202 314 200 Q260 198 232 170 Q216 152 220 132 Z" />
-                            </g>
-                            <path d="M110 150 Q200 70 280 110 T355 115" fill="none" stroke="#e74c3c" stroke-width="3.8" stroke-linecap="round" marker-end="url(#arrowHead)" />
-                            <circle cx="110" cy="150" r="8.5" fill="#e74c3c" stroke="white" stroke-width="2" />
-                            <circle cx="280" cy="110" r="7" fill="#e74c3c" stroke="white" stroke-width="2" />
-                            <circle cx="355" cy="115" r="10" fill="#e74c3c" stroke="white" stroke-width="2" />
-                            <text x="84" y="173">France</text>
-                            <text x="70" y="188" font-size="0.65rem" fill="rgba(11,34,54,0.6)">Le Havre &mdash; Port</text>
-                            <text x="248" y="95">&Eacute;tats-Unis</text>
-                            <text x="232" y="110" font-size="0.65rem" fill="rgba(11,34,54,0.6)">Newark &mdash; Hub</text>
-                            <text x="330" y="138">Canada</text>
-                        </svg>
+                        <img src="image/map.jpg" alt="Carte du trajet logistique France - &Eacute;tats-Unis - Canada" class="transport-map-image">
                         <figcaption class="map-caption">Flux logistique : d&eacute;part port du Havre, transit Newark (US), arriv&eacute;e entrep&ocirc;t Montr&eacute;al.</figcaption>
                     </figure>
                 </aside>
