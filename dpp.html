@@ -202,6 +202,182 @@
             line-height: 1.7;
         }
 
+        .hero-visual {
+            display: none;
+            max-width: min(100%, 420px);
+            border-radius: 20px;
+            box-shadow: 0 18px 48px rgba(11, 34, 54, 0.16);
+        }
+
+        .hero-visual.is-active {
+            display: block;
+        }
+
+        .hero-visual-switcher {
+            margin-top: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .hero-visual-switcher .visual-stage {
+            position: relative;
+        }
+
+        .hero-visual-switcher .visual-stage img {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-visual-switcher .visual-controls {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.6rem;
+            background: rgba(74, 144, 226, 0.12);
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
+        }
+
+        .visual-toggle {
+            border: none;
+            background: transparent;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .visual-toggle:is(:hover, :focus-visible) {
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--blue);
+        }
+
+        .visual-toggle.is-active {
+            background: linear-gradient(135deg, var(--blue), var(--teal));
+            color: white;
+            box-shadow: 0 8px 22px rgba(74, 144, 226, 0.24);
+        }
+
+        .product-sizes {
+            display: inline-flex;
+            gap: 0.35rem;
+            margin-left: 0.2rem;
+        }
+
+        .size-pill {
+            min-width: 40px;
+            padding: 0.38rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(74, 144, 226, 0.35);
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 6px 14px rgba(74, 144, 226, 0.1);
+        }
+
+        .size-pill.is-active {
+            border-width: 2px;
+            border-color: rgba(26, 188, 156, 0.9);
+            box-shadow: 0 10px 24px rgba(26, 188, 156, 0.25);
+            color: rgba(26, 188, 156, 0.95);
+            background: rgba(26, 188, 156, 0.12);
+        }
+
+        .color-selector {
+            margin-top: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .color-selector .color-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: rgba(11, 34, 54, 0.75);
+        }
+
+        .color-dots {
+            display: inline-flex;
+            gap: 0.45rem;
+        }
+
+        .color-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 0 1px rgba(11, 34, 54, 0.15);
+            position: relative;
+        }
+
+        .color-dot::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 1px rgba(11, 34, 54, 0.15);
+        }
+
+        .color-dot.is-active {
+            box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.6), 0 10px 22px rgba(26, 188, 156, 0.25);
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: rgba(26, 188, 156, 0.95);
+            background: rgba(26, 188, 156, 0.12);
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+        }
+
+        .color-dot.color-rouge { background: #C0392B; }
+        .color-dot.color-noir { background: #2C3E50; }
+        .color-dot.color-blanc { background: #F5F5F5; }
+        .color-dot.color-beige { background: #D6BFA4; }
+        .color-dot.color-bleu { background: #2874A6; }
+
+        .transport-map {
+            margin-top: 1.4rem;
+            padding: 1.1rem;
+            border-radius: 16px;
+            background: radial-gradient(circle at top left, rgba(74, 144, 226, 0.14), rgba(26, 188, 156, 0.08));
+            border: 1px solid rgba(74, 144, 226, 0.16);
+            box-shadow: 0 14px 28px rgba(11, 34, 54, 0.12);
+            max-width: 100%;
+        }
+
+        .transport-map svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .transport-map .map-caption {
+            margin-top: 0.9rem;
+            font-size: 0.92rem;
+            color: rgba(11, 34, 54, 0.72);
+            text-align: center;
+        }
+
+        .transport-map text {
+            font-family: "Manrope", "Segoe UI", sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            fill: rgba(11, 34, 54, 0.8);
+        }
+
         .hero-actions {
             margin-top: 2rem;
             display: flex;
@@ -296,7 +472,7 @@
             gap: 0.8rem;
         }
 
-        .section-nav a {
+        .section-nav button {
             padding: 0.65rem 1.2rem;
             border-radius: 999px;
             border: 1px solid rgba(74, 144, 226, 0.38);
@@ -305,13 +481,29 @@
             font-weight: 600;
             font-size: 0.95rem;
             background: rgba(74, 144, 226, 0.08);
+            font-family: inherit;
+            line-height: 1.2;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(74, 144, 226, 0.14);
             transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
         }
 
-        .section-nav a:hover {
+        .section-nav button:hover,
+        .section-nav button:focus-visible {
             transform: translateY(-2px);
             box-shadow: 0 10px 18px rgba(74, 144, 226, 0.2);
             background: rgba(26, 188, 156, 0.12);
+        }
+
+        .section-nav button.is-active {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.94), rgba(26, 188, 156, 0.92));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 12px 24px rgba(26, 188, 156, 0.24);
+        }
+
+        .tab-panel[hidden] {
+            display: none !important;
         }
 
         .dpp-section {
@@ -529,7 +721,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .section-nav a {
+            .section-nav button {
                 width: 100%;
                 text-align: center;
             }
@@ -556,8 +748,33 @@
             <div class="container dpp-hero-grid">
                 <div class="hero-text">
                     <span class="badge">Passeport produit digital</span>
-                    <h1>EcoFlow TID</h1>
-                    <p>Le module EcoFlow TID allie performance &eacute;nerg&eacute;tique et transparence r&eacute;glementaire. Ce passeport num&eacute;rique trace chaque &eacute;tape : de la s&eacute;lection des mati&egrave;res jusqu'aux sc&eacute;narios de seconde vie. Il est con&ccedil;u pour vos partenaires, vos distributeurs et les &eacute;co-organismes.</p>
+                    <div class="hero-visual-switcher">
+                        <div class="visual-stage">
+                            <img src="image/image produit.jpg" alt="EcoFlow TID - vue avant du produit" class="hero-visual is-active" data-visual="front">
+                            <img src="image/image dos.jpg" alt="EcoFlow TID - vue arri&egrave;re du produit" class="hero-visual" data-visual="back" hidden>
+                        </div>
+                        <div class="visual-controls" role="group" aria-label="Choisir la vue du produit">
+                            <button type="button" class="visual-toggle is-active" data-visual-target="front" aria-pressed="true">Vue avant</button>
+                            <button type="button" class="visual-toggle" data-visual-target="back" aria-pressed="false">Vue dos</button>
+                            <div class="product-sizes" role="group" aria-label="Tailles disponibles">
+                                <span class="size-pill" aria-hidden="true">S</span>
+                                <span class="size-pill" aria-hidden="true">M</span>
+                                <span class="size-pill is-active" aria-label="Taille L s&eacute;lectionn&eacute;e">L</span>
+                                <span class="size-pill" aria-hidden="true">XL</span>
+                            </div>
+                        </div>
+                        <div class="color-selector" role="group" aria-label="Couleurs disponibles">
+                            <span class="color-label">Couleurs</span>
+                            <div class="color-dots">
+                                <span class="color-dot color-rouge" role="img" aria-label="Rouge"></span>
+                                <span class="color-dot color-noir" role="img" aria-label="Noir"></span>
+                                <span class="color-dot color-blanc" role="img" aria-label="Blanc"></span>
+                                <span class="color-dot color-beige is-active" role="img" aria-label="Beige s&eacute;lectionn&eacute;"></span>
+                                <span class="color-dot color-bleu" role="img" aria-label="Bleu"></span>
+                            </div>
+                            <span class="color-name">Mod&egrave;le beige</span>
+                        </div>
+                    </div>
                     <div class="meta-grid">
                         <div class="meta-card">
                             <span class="label">Version</span>
@@ -565,11 +782,15 @@
                         </div>
                         <div class="meta-card">
                             <span class="label">Identifiant DPP</span>
-                            <span class="value">DPP-EF-209481</span>
+                            <span class="value">TID001-BEI-L</span>
                         </div>
                         <div class="meta-card">
-                            <span class="label">Cat&eacute;gorie</span>
-                            <span class="value">Solutions &eacute;nerg&eacute;tiques modulaires</span>
+                            <span class="label">GTIN</span>
+                            <span class="value">1253458963251</span>
+                        </div>
+                        <div class="meta-card">
+                            <span class="label">SKU</span>
+                            <span class="value">TSH-HOM-BEI-L-2025</span>
                         </div>
                     </div>
                     <div class="hero-actions">
@@ -598,19 +819,59 @@
                         </div>
                     </dl>
                     <p style="color: rgba(11,34,54,0.76); line-height: 1.6;">Ce passeport est conforme aux exigences europ&eacute;ennes Digital Product Passport et s'int&egrave;gre &agrave; vos tableaux de bord RSE.</p>
+                    <figure class="transport-map" aria-label="Trajet logistique France &rarr; &Eacute;tats-Unis &rarr; Canada">
+                        <svg viewBox="0 0 420 240" role="img" aria-labelledby="transport-map-title">
+                            <title id="transport-map-title">Flux de transport : France vers &Eacute;tats-Unis puis Canada</title>
+                            <defs>
+                                <pattern id="mapGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                    <rect width="30" height="30" fill="rgba(255,255,255,0)" />
+                                    <path d="M30 0 H0 V30" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.6" />
+                                </pattern>
+                                <linearGradient id="oceanGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#9fd6ff" />
+                                    <stop offset="100%" stop-color="#66b1e6" />
+                                </linearGradient>
+                                <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L6,3 z" fill="#e74c3c" />
+                                </marker>
+                            </defs>
+                            <rect x="0" y="0" width="420" height="240" fill="url(#oceanGradient)" rx="16" />
+                            <rect x="0" y="0" width="420" height="240" fill="url(#mapGrid)" rx="16" opacity="0.35" />
+                            <g fill="#cbe7ca" stroke="rgba(53,128,103,0.45)" stroke-width="1.1">
+                                <path d="M54 155 Q30 123 52 100 Q86 62 140 72 Q195 82 214 120 Q226 144 210 170 Q188 210 142 204 Q78 198 54 155 Z" />
+                                <path d="M210 132 Q238 92 290 90 Q340 88 368 112 Q404 143 388 176 Q372 210 318 208 Q250 204 220 170 Q204 151 210 132 Z" />
+                                <path d="M320 70 Q340 54 360 56 Q382 58 394 72 Q404 86 394 98 Q372 120 340 112 Q318 106 320 70 Z" />
+                                <path d="M72 190 Q110 208 150 210 Q186 212 210 190 Q240 164 248 182 Q256 202 228 220 Q200 238 150 232 Q108 228 80 210 Q64 198 72 190 Z" opacity="0.65" />
+                            </g>
+                            <g fill="#add8a6" stroke="rgba(53,128,103,0.25)" stroke-width="0.8">
+                                <path d="M68 148 Q46 124 62 104 Q90 74 140 80 Q182 86 200 118 Q210 138 198 160 Q180 194 144 190 Q94 186 68 148 Z" />
+                                <path d="M220 132 Q246 102 294 100 Q332 100 356 118 Q386 140 372 170 Q358 202 314 200 Q260 198 232 170 Q216 152 220 132 Z" />
+                            </g>
+                            <path d="M110 150 Q200 70 280 110 T355 115" fill="none" stroke="#e74c3c" stroke-width="3.8" stroke-linecap="round" marker-end="url(#arrowHead)" />
+                            <circle cx="110" cy="150" r="8.5" fill="#e74c3c" stroke="white" stroke-width="2" />
+                            <circle cx="280" cy="110" r="7" fill="#e74c3c" stroke="white" stroke-width="2" />
+                            <circle cx="355" cy="115" r="10" fill="#e74c3c" stroke="white" stroke-width="2" />
+                            <text x="84" y="173">France</text>
+                            <text x="70" y="188" font-size="0.65rem" fill="rgba(11,34,54,0.6)">Le Havre &mdash; Port</text>
+                            <text x="248" y="95">&Eacute;tats-Unis</text>
+                            <text x="232" y="110" font-size="0.65rem" fill="rgba(11,34,54,0.6)">Newark &mdash; Hub</text>
+                            <text x="330" y="138">Canada</text>
+                        </svg>
+                        <figcaption class="map-caption">Flux logistique : d&eacute;part port du Havre, transit Newark (US), arriv&eacute;e entrep&ocirc;t Montr&eacute;al.</figcaption>
+                    </figure>
                 </aside>
             </div>
         </section>
 
-        <nav class="section-nav" aria-label="Sommaire DPP">
-            <a href="#matieres">Mati&egrave;res</a>
-            <a href="#fabrication">Fabrication</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#entretien">Entretien &amp; r&eacute;paration</a>
-            <a href="#fin-de-vie">Fin de vie</a>
+        <nav class="section-nav" aria-label="Sommaire DPP" role="tablist">
+            <button type="button" class="section-tab is-active" id="tab-matieres" data-panel="matieres" role="tab" aria-controls="matieres" aria-selected="true">Mati&egrave;res</button>
+            <button type="button" class="section-tab" id="tab-fabrication" data-panel="fabrication" role="tab" aria-controls="fabrication" aria-selected="false">Fabrication</button>
+            <button type="button" class="section-tab" id="tab-certifications" data-panel="certifications" role="tab" aria-controls="certifications" aria-selected="false">Certifications</button>
+            <button type="button" class="section-tab" id="tab-entretien" data-panel="entretien" role="tab" aria-controls="entretien" aria-selected="false">Entretien &amp; r&eacute;paration</button>
+            <button type="button" class="section-tab" id="tab-fin-de-vie" data-panel="fin-de-vie" role="tab" aria-controls="fin-de-vie" aria-selected="false">Fin de vie</button>
         </nav>
 
-        <section class="dpp-section" id="matieres">
+        <section class="dpp-section tab-panel" id="matieres" role="tabpanel" aria-labelledby="tab-matieres">
             <div class="container">
                 <div class="section-header">
                     <h2>Mati&egrave;res</h2>
@@ -648,7 +909,7 @@
             </div>
         </section>
 
-        <section class="dpp-section" id="fabrication" style="background: rgba(74,144,226,0.08);">
+        <section class="dpp-section tab-panel" id="fabrication" style="background: rgba(74,144,226,0.08);" role="tabpanel" aria-labelledby="tab-fabrication" hidden>
             <div class="container">
                 <div class="section-header">
                     <h2>Fabrication</h2>
@@ -675,7 +936,7 @@
             </div>
         </section>
 
-        <section class="dpp-section" id="certifications">
+        <section class="dpp-section tab-panel" id="certifications" role="tabpanel" aria-labelledby="tab-certifications" hidden>
             <div class="container">
                 <div class="section-header">
                     <h2>Certifications</h2>
@@ -702,7 +963,7 @@
             </div>
         </section>
 
-        <section class="dpp-section" id="entretien" style="background: rgba(26,188,156,0.1);">
+        <section class="dpp-section tab-panel" id="entretien" style="background: rgba(26,188,156,0.1);" role="tabpanel" aria-labelledby="tab-entretien" hidden>
             <div class="container">
                 <div class="section-header">
                     <h2>Entretien &amp; r&eacute;paration</h2>
@@ -740,7 +1001,7 @@
             </div>
         </section>
 
-        <section class="dpp-section" id="fin-de-vie">
+        <section class="dpp-section tab-panel" id="fin-de-vie" role="tabpanel" aria-labelledby="tab-fin-de-vie" hidden>
             <div class="container">
                 <div class="section-header">
                     <h2>Fin de vie</h2>
@@ -798,5 +1059,70 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var switchers = document.querySelectorAll(".hero-visual-switcher");
+
+            switchers.forEach(function (switcher) {
+                var buttons = switcher.querySelectorAll(".visual-toggle");
+                var visuals = switcher.querySelectorAll(".hero-visual");
+
+                buttons.forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        var target = button.getAttribute("data-visual-target");
+
+                        buttons.forEach(function (btn) {
+                            var isActive = btn === button;
+                            btn.classList.toggle("is-active", isActive);
+                            btn.setAttribute("aria-pressed", String(isActive));
+                        });
+
+                        visuals.forEach(function (visual) {
+                            var match = visual.getAttribute("data-visual") === target;
+                            visual.classList.toggle("is-active", match);
+                            visual.hidden = !match;
+                        });
+                    });
+                });
+            });
+
+            var tabNav = document.querySelector(".section-nav[role='tablist']");
+            if (tabNav) {
+                var tabButtons = tabNav.querySelectorAll(".section-tab");
+                var panels = document.querySelectorAll(".tab-panel");
+
+                tabButtons.forEach(function (btn, index) {
+                    var isActive = btn.classList.contains("is-active");
+                    btn.setAttribute("aria-selected", String(isActive));
+                    btn.setAttribute("tabindex", isActive ? "0" : "-1");
+
+                    btn.addEventListener("click", function () {
+                        if (btn.classList.contains("is-active")) {
+                            return;
+                        }
+
+                        var targetId = btn.getAttribute("data-panel");
+                        if (!targetId) {
+                            return;
+                        }
+
+                        tabButtons.forEach(function (button) {
+                            var isCurrent = button === btn;
+                            button.classList.toggle("is-active", isCurrent);
+                            button.setAttribute("aria-selected", String(isCurrent));
+                            button.setAttribute("tabindex", isCurrent ? "0" : "-1");
+                        });
+
+                        panels.forEach(function (panel) {
+                            var match = panel.id === targetId;
+                            panel.hidden = !match;
+                        });
+
+                        btn.focus();
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
