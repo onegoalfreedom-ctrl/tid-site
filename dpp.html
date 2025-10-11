@@ -541,6 +541,171 @@
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         }
 
+        .materials-showcase {
+            display: grid;
+            gap: 2.4rem;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            align-items: stretch;
+        }
+
+        .materials-visuals {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            width: min(100%, 1200px);
+            max-width: 1200px;
+            max-height: 1200px;
+            aspect-ratio: 1 / 1;
+            justify-self: center;
+            background: radial-gradient(circle at 20% 20%, rgba(74, 144, 226, 0.25), transparent),
+                radial-gradient(circle at 80% 20%, rgba(26, 188, 156, 0.22), transparent),
+                rgba(10, 30, 46, 0.85);
+            box-shadow: 0 28px 48px rgba(15, 64, 95, 0.3);
+        }
+
+        .material-visual {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            padding: 1.8rem;
+            opacity: 0;
+            transform: translateY(28px) scale(0.97);
+            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .material-visual::before {
+            content: "";
+            position: absolute;
+            inset: 1.6rem;
+            border-radius: 24px;
+            background: rgba(0, 0, 0, 0.35);
+            mix-blend-mode: multiply;
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            pointer-events: none;
+        }
+
+        .material-visual img {
+            position: absolute;
+            inset: 1.6rem;
+            width: calc(100% - 3.2rem);
+            height: calc(100% - 3.2rem);
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 24px 44px rgba(9, 20, 35, 0.35);
+        }
+
+        .material-visual figcaption {
+            position: absolute;
+            left: 2.2rem;
+            right: 2.2rem;
+            bottom: 2.2rem;
+            padding: 1rem 1.1rem;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.92), rgba(26, 188, 156, 0.9));
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-shadow: 0 6px 18px rgba(4, 14, 32, 0.45);
+            box-shadow: 0 18px 36px rgba(16, 54, 72, 0.35);
+        }
+
+        .material-visual.is-active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .material-visual.is-active::before {
+            opacity: 1;
+        }
+
+        .materials-details {
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .material-card {
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(148, 163, 184, 0.32);
+            box-shadow: 0 16px 28px rgba(26, 188, 156, 0.08);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .material-card::after {
+            content: "";
+            position: absolute;
+            inset: 0.35rem;
+            border-radius: 16px;
+            border: 1px dashed transparent;
+            transition: border-color 0.25s ease;
+            pointer-events: none;
+        }
+
+        .material-card:is(.is-active, :focus-visible) {
+            border-color: rgba(26, 188, 156, 0.68);
+        }
+
+        .material-card.is-active::after,
+        .material-card:focus-visible::after {
+            border-color: rgba(26, 188, 156, 0.45);
+        }
+
+        .material-card h3 {
+            font-size: 1.08rem;
+            color: rgba(11, 34, 54, 0.95);
+        }
+
+        .material-card .material-origin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(74, 144, 226, 0.82);
+            background: rgba(74, 144, 226, 0.12);
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1080px) {
+            .materials-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .materials-visuals {
+                order: -1;
+                margin-inline: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .materials-visuals {
+                border-radius: 22px;
+            }
+
+            .material-visual {
+                padding: 1.2rem;
+            }
+
+            .material-visual::before,
+            .material-visual img {
+                inset: 1.2rem;
+                width: calc(100% - 2.4rem);
+                height: calc(100% - 2.4rem);
+                border-radius: 18px;
+            }
+
+            .material-visual figcaption {
+                left: 1.6rem;
+                right: 1.6rem;
+                bottom: 1.6rem;
+            }
+        }
+
         .info-card {
             background: rgba(255, 255, 255, 0.88);
             border: 1px solid rgba(148, 163, 184, 0.28);
@@ -555,6 +720,12 @@
             transform: translateY(-3px);
             box-shadow: 0 20px 38px rgba(26, 188, 156, 0.16);
             border-color: rgba(74, 144, 226, 0.4);
+        }
+
+        .material-card:hover,
+        .material-card:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 22px 38px rgba(26, 188, 156, 0.16);
         }
 
         .info-card h3 {
@@ -745,9 +916,9 @@
             <nav aria-label="Navigation principale">
                 <a href="index.html#presentation">Produit</a>
                 <a href="index.html#dpp">Vue synth&eacute;tique</a>
-                <a href="index.html#contact">Contact</a>
+                <a href="dpp.html#contact-card">Contact</a>
             </nav>
-            <a class="nav-cta" href="index.html#contact">Demander une d&eacute;mo</a>
+            <a class="nav-cta" >L’ensemble des DPP</a>
         </div>
     </header>
 
@@ -755,7 +926,7 @@
         <section class="dpp-hero">
             <div class="container dpp-hero-grid">
                 <div class="hero-text">
-                    <span class="badge">Passeport produit digital</span>
+                    <span class="badge">Haut à manches courtes</span>
                     <div class="hero-visual-switcher">
                         <div class="visual-stage">
                             <img src="image/image produit.jpg" alt="EcoFlow TID - vue avant du produit" class="hero-visual is-active" data-visual="front">
@@ -810,12 +981,13 @@
                     <h2>R&eacute;sum&eacute; DPP</h2>
                     <dl class="dl-grid">
                         <div>
-                            <dt>Cycle de mise &agrave; jour</dt>
-                            <dd>Trimestriel &middot; synchronis&eacute; ERP</dd>
+                            <dt>Composants</dt>
+                            <dd>Coton 80%<dd>
+                            <dd>Polyester 20%<dd></dd>
                         </div>
                         <div>
                             <dt>Origine</dt>
-                            <dd>Europe &mdash; France, Allemagne, Espagne</dd>
+                            <dd>Corée du sud &mdash; France, U.S, Canada</dd>
                         </div>
                         <div>
                             <dt>Empreinte carbone</dt>
@@ -823,13 +995,13 @@
                         </div>
                         <div>
                             <dt>Taux de circularit&eacute;</dt>
-                            <dd>78&nbsp;% composants recyclables</dd>
+                            <dd>80&nbsp;% composants recyclables</dd>
                         </div>
                     </dl>
-                    <p style="color: rgba(11,34,54,0.76); line-height: 1.6;">Ce passeport est conforme aux exigences europ&eacute;ennes Digital Product Passport et s'int&egrave;gre &agrave; vos tableaux de bord RSE.</p>
+                    <p style="color: rgba(11,34,54,0.76); line-height: 1.6;">Ce passeport est basé sur des informations vérifiées et authentifiées. Il ne contient aucun élément de greenwashing.</p>
                     <figure class="transport-map" aria-label="Trajet logistique France &rarr; &Eacute;tats-Unis &rarr; Canada">
                         <img src="image/map.jpg" alt="Carte du trajet logistique France - &Eacute;tats-Unis - Canada" class="transport-map-image">
-                        <figcaption class="map-caption">Flux logistique : d&eacute;part port du Havre, transit Newark (US), arriv&eacute;e entrep&ocirc;t Montr&eacute;al.</figcaption>
+                        <figcaption class="map-caption">Traçabilité logistique : plus de 18 500 km parcourus avant d’atteindre votre magasin.</figcaption>
                     </figure>
                 </aside>
             </div>
@@ -849,31 +1021,50 @@
                     <h2>Mati&egrave;res</h2>
                     <p>Identification pr&eacute;cise des composants et de leur provenance. EcoFlow TID privil&eacute;gie des mat&eacute;riaux recycl&eacute;s, bas carbone et tra&ccedil;ables, compl&eacute;t&eacute;s par des indicateurs de circularit&eacute; pour chaque sous-ensemble.</p>
                 </div>
-                <div class="info-grid">
-                    <article class="info-card">
-                        <h3>Structure principale</h3>
-                        <ul class="list-check">
-                            <li>Aluminium recycl&eacute; post-industriel (75&nbsp;% du ch&acirc;ssis).</li>
-                            <li>Alliage trait&eacute; anticorrosion sans chrome hexavalent.</li>
-                            <li>Origine certifi&eacute;e : ateliers partenaires Nouvelle-Aquitaine.</li>
-                        </ul>
-                    </article>
-                    <article class="info-card">
-                        <h3>Modules &eacute;lectroniques</h3>
-                        <ul class="list-check">
-                            <li>Cartes conformes RoHS et REACH, composants basse consommation.</li>
-                            <li>Soudure sans plomb SAC305 avec audit de tra&ccedil;abilit&eacute; par lot.</li>
-                            <li>Firmware embarqu&eacute; audit&eacute; en cybers&eacute;curit&eacute; (ISO&nbsp;27001).</li>
-                        </ul>
-                    </article>
-                    <article class="info-card">
-                        <h3>Enveloppe &amp; finitions</h3>
-                        <ul class="list-check">
-                            <li>Biopolym&egrave;res &agrave; base de chanvre (30&nbsp;%) pour les zones non structurelles.</li>
-                            <li>Peinture aqueuse &agrave; faible COV, application &agrave; froid.</li>
-                            <li>&Eacute;tiquetage recyclable mono-mati&egrave;re, colle sans solvants.</li>
-                        </ul>
-                    </article>
+                <div class="materials-showcase">
+                    <div class="materials-visuals" aria-hidden="true">
+                        <figure class="material-visual is-active" data-material="structure">
+                            <img src="image/teinte.png" alt="Structure principale en aluminium recycl&eacute;" loading="lazy">
+                            <figcaption>Structure principale en aluminium recycl&eacute;</figcaption>
+                        </figure>
+                        <figure class="material-visual" data-material="electronique">
+                            <img src="image/Pet%20bottle.png" alt="Modules &eacute;lectroniques basse consommation" loading="lazy">
+                            <figcaption>Modules &eacute;lectroniques &agrave; faible impact</figcaption>
+                        </figure>
+                        <figure class="material-visual" data-material="enveloppe">
+                            <img src="image/Coton%20organic.png" alt="Enveloppe biosourc&eacute;e et finitions responsables" loading="lazy">
+                            <figcaption>Enveloppe &amp; finitions biosourc&eacute;es</figcaption>
+                        </figure>
+                    </div>
+                    <div class="materials-details">
+                        <article class="info-card material-card is-active" data-material="structure" tabindex="0">
+                            <span class="material-origin">Origine Nouvelle-Aquitaine</span>
+                            <h3>Structure principale</h3>
+                            <ul class="list-check">
+                                <li>Aluminium recycl&eacute; post-industriel (75&nbsp;% du ch&acirc;ssis).</li>
+                                <li>Alliage trait&eacute; anticorrosion sans chrome hexavalent.</li>
+                                <li>Origine certifi&eacute;e : ateliers partenaires Nouvelle-Aquitaine.</li>
+                            </ul>
+                        </article>
+                        <article class="info-card material-card" data-material="electronique" tabindex="0">
+                            <span class="material-origin">Assemblage UE &amp; Am&eacute;rique du Nord</span>
+                            <h3>Modules &eacute;lectroniques</h3>
+                            <ul class="list-check">
+                                <li>Cartes conformes RoHS et REACH, composants basse consommation.</li>
+                                <li>Soudure sans plomb SAC305 avec audit de tra&ccedil;abilit&eacute; par lot.</li>
+                                <li>Firmware embarqu&eacute; audit&eacute; en cybers&eacute;curit&eacute; (ISO&nbsp;27001).</li>
+                            </ul>
+                        </article>
+                        <article class="info-card material-card" data-material="enveloppe" tabindex="0">
+                            <span class="material-origin">Fili&egrave;res biosourc&eacute;es locales</span>
+                            <h3>Enveloppe &amp; finitions</h3>
+                            <ul class="list-check">
+                                <li>Biopolym&egrave;res &agrave; base de chanvre (30&nbsp;%) pour les zones non structurelles.</li>
+                                <li>Peinture aqueuse &agrave; faible COV, application &agrave; froid.</li>
+                                <li>&Eacute;tiquetage recyclable mono-mati&egrave;re, colle sans solvants.</li>
+                            </ul>
+                        </article>
+                    </div>
                 </div>
                 <div class="callout" style="margin-top: 2rem;">
                     <strong>Analyse mati&egrave;res :</strong> dossier PDF, fiches de donn&eacute;es de s&eacute;curit&eacute; et certificats fournisseurs disponibles dans l'espace partenaires.
@@ -1021,13 +1212,13 @@
             <div class="footer-nav">
                 <a href="index.html#accueil">Vitrine produit</a>
                 <a href="index.html#dpp">Synth&egrave;se DPP</a>
-                <a href="index.html#contact">Contact</a>
+                <a href="dpp.html#contact-card">Contact</a>
             </div>
             <div class="contact-card">
                 <span>Parlons-en</span>
-                <p>Email : contact@tid-product.com</p>
-                <p>T&eacute;l&eacute;phone : +33&nbsp;1&nbsp;23&nbsp;45&nbsp;67&nbsp;89</p>
-                <a class="btn-primary" href="mailto:contact@tid-product.com" style="justify-self: start;">Planifier une d&eacute;mo</a>
+                <p>Email : contact@tidpassport.com</p>
+                <p>T&eacute;l&eacute;phone : +1(450) 515-8444</p>
+                <a class="btn-primary" href="mailto:contact@tidpassport.com" style="justify-self: start;">Planifier une d&eacute;mo</a>
             </div>
         </div>
     </footer>
@@ -1057,6 +1248,68 @@
                     });
                 });
             });
+
+            var materialSection = document.getElementById("matieres");
+            if (materialSection) {
+                var materialCards = materialSection.querySelectorAll(".material-card");
+                var materialVisuals = materialSection.querySelectorAll(".material-visual");
+
+                if (materialCards.length && materialVisuals.length) {
+                    var activateMaterial = function (key) {
+                        materialCards.forEach(function (card) {
+                            var match = card.getAttribute("data-material") === key;
+                            card.classList.toggle("is-active", match);
+                        });
+
+                        materialVisuals.forEach(function (visual) {
+                            var match = visual.getAttribute("data-material") === key;
+                            visual.classList.toggle("is-active", match);
+                            visual.hidden = !match;
+                        });
+                    };
+
+                    var defaultKey = materialCards[0].getAttribute("data-material");
+                    if (defaultKey) {
+                        activateMaterial(defaultKey);
+                    }
+
+                    if ("IntersectionObserver" in window) {
+                        var observer = new IntersectionObserver(function (entries) {
+                            entries.forEach(function (entry) {
+                                if (entry.isIntersecting) {
+                                    var observedKey = entry.target.getAttribute("data-material");
+                                    if (observedKey) {
+                                        activateMaterial(observedKey);
+                                    }
+                                }
+                            });
+                        }, { rootMargin: "-25% 0px -45% 0px", threshold: 0.45 });
+
+                        materialCards.forEach(function (card) {
+                            observer.observe(card);
+                        });
+                    }
+
+                    materialCards.forEach(function (card) {
+                        var cardKey = card.getAttribute("data-material");
+                        if (!cardKey) {
+                            return;
+                        }
+
+                        card.addEventListener("mouseenter", function () {
+                            activateMaterial(cardKey);
+                        });
+
+                        card.addEventListener("focus", function () {
+                            activateMaterial(cardKey);
+                        });
+
+                        card.addEventListener("click", function () {
+                            activateMaterial(cardKey);
+                        });
+                    });
+                }
+            }
 
             var tabNav = document.querySelector(".section-nav[role='tablist']");
             if (tabNav) {
