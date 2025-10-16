@@ -803,14 +803,55 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 18px;
             border: 1px solid rgba(148, 163, 184, 0.28);
-            padding: 1.6rem 1.8rem;
+            padding: 1.6rem 1.8rem 2.2rem;
             display: grid;
-            gap: 0.6rem;
+            gap: 0.9rem;
+            text-align: center;
+            justify-items: center;
         }
 
         .cert-card h3 {
             font-size: 1.05rem;
             color: var(--dark);
+        }
+
+        .cert-connector {
+            width: 3px;
+            height: 38px;
+            background: linear-gradient(180deg, rgba(74, 144, 226, 0.15), rgba(26, 188, 156, 0.45));
+            border-radius: 999px;
+            position: relative;
+        }
+
+        .cert-connector::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 8px solid rgba(26, 188, 156, 0.65);
+        }
+
+        .cert-text {
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .cert-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-logo img {
+            max-width: 120px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.08));
         }
 
         .callout {
@@ -1108,20 +1149,44 @@
                 </div>
                 <div class="cert-grid">
                     <article class="cert-card">
-                        <h3>GOTS (Global Organic Textile Standard)</h3>
-                        <p>GOTS garantit que les textiles biologiques respectent des normes environnementales et sociales rigoureuses, de la récolte à la fabrication.</p>
+                        <div class="cert-text">
+                            <h3>GOTS (Global Organic Textile Standard)</h3>
+                            <p>GOTS garantit que les textiles biologiques respectent des normes environnementales et sociales rigoureuses, de la r&eacute;colte &agrave; la fabrication.</p>
+                        </div>
+                        <div class="cert-connector" aria-hidden="true"></div>
+                        <div class="cert-logo">
+                            <img src="image/GOTS%20logo.png" alt="Logo de la certification GOTS">
+                        </div>
                     </article>
                     <article class="cert-card">
-                        <h3>OEKO-TEX® Standard 100 / Made in Green</h3>
-                        <p>OEKO-TEX® garantit que les textiles sont exempts de substances nocives et produits dans des conditions responsables.</p>
+                        <div class="cert-text">
+                            <h3>OEKO-TEX&reg; Standard 100 / Made in Green</h3>
+                            <p>OEKO-TEX&reg; garantit que les textiles sont exempts de substances nocives et produits dans des conditions responsables.</p>
+                        </div>
+                        <div class="cert-connector" aria-hidden="true"></div>
+                        <div class="cert-logo">
+                            <img src="image/OEKO-TEX%20Logo.png" alt="Logo de la certification OEKO-TEX Standard 100 et Made in Green">
+                        </div>
                     </article>
                     <article class="cert-card">
-                        <h3>Fair Trade Textile Standard</h3>
-                        <p>Elle assure des conditions de travail équitables et une production textile socialement responsable.</p>
+                        <div class="cert-text">
+                            <h3>Fair Trade Textile Standard</h3>
+                            <p>Elle assure des conditions de travail &eacute;quitables et une production textile socialement responsable.</p>
+                        </div>
+                        <div class="cert-connector" aria-hidden="true"></div>
+                        <div class="cert-logo">
+                            <img src="image/Fairtrade-logo.png" alt="Logo de la certification Fair Trade Textile Standard">
+                        </div>
                     </article>
                     <article class="cert-card">
-                        <h3>Cradle to Cradle Certified®</h3>
-                        <p>Elle valorise les textiles conçus pour être sûrs, durables et entièrement recyclables.</p>
+                        <div class="cert-text">
+                            <h3>Cradle to Cradle Certified&reg;</h3>
+                            <p>Elle valorise les textiles con&ccedil;us pour &ecirc;tre s&ucirc;rs, durables et enti&egrave;rement recyclables.</p>
+                        </div>
+                        <div class="cert-connector" aria-hidden="true"></div>
+                        <div class="cert-logo">
+                            <img src="image/cradle%20logo.png" alt="Logo de la certification Cradle to Cradle Certified">
+                        </div>
                     </article>
                 </div>
             </div>
@@ -1131,31 +1196,31 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Entretien &amp; r&eacute;paration</h2>
-                    <p>Le produit est pens&eacute; pour la maintenabilit&eacute;. Les modules critiques sont accessibles sans outillage sp&eacute;cialis&eacute; et accompagn&eacute;s d'une documentation guid&eacute;e.</p>
+                    <p>Le vêtement est conçu pour durer. Chaque pièce est accompagnée d’un guide interactif d’entretien, accessible via son passeport numérique TID, afin de prolonger sa durée de vie et favoriser la circularité.</p>
                 </div>
                 <div class="info-grid">
                     <article class="info-card">
-                        <h3>Maintenance pr&eacute;ventive</h3>
+                        <h3>Entretien préventif</h3>
                         <ul class="list-check">
-                            <li>Inspection visuelle trimestrielle (connectique, ventilation).</li>
-                            <li>Nettoyage des filtres &agrave; air par simple remplacement clips&eacute;.</li>
-                            <li>Diagnostic firmware via l'application EcoFlow Care.</li>
+                            <li>Lavage recommandé à basse température pour réduire l’usure des fibres et la consommation d’énergie.</li>
+                            <li>Séchage à l’air libre privilégié, limitant l’impact carbone et prolongeant la tenue du tissu.</li>
+                            <li>Repassage léger ou vapeur à basse chaleur pour préserver la texture du coton biologique.</li>
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>R&eacute;paration niveau 1</h3>
+                        <h3>Réparation & seconde vie</h3>
                         <ul class="list-check">
-                            <li>Modules batterie et cartes d'alimentation rempla&ccedil;ables en 15&nbsp;minutes.</li>
-                            <li>Guides vid&eacute;o et PDF (FR/EN) accessibles via le QR code produit.</li>
-                            <li>Pi&egrave;ces d&eacute;tach&eacute;es disponibles 10&nbsp;ans apr&egrave;s mise sur le march&eacute;.</li>
+                            <li>Guides vidéo et tutoriaux disponibles via le QR code TID : couture, retouches simples et remplacement d’étiquettes.</li>
+                            <li>Programme de retour atelier : réparations effectuées dans nos ateliers partenaires (France / Canada).</li>
+                            <li>Possibilité de recyclage textile ou de don en fin de vie via un réseau certifié.</li>
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>Support partenaires</h3>
+                        <h3>Support & communauté</h3>
                         <ul class="list-check">
-                            <li>Hotline B2B d&eacute;di&eacute;e et portail de tickets int&eacute;gr&eacute; &agrave; l'ERP.</li>
-                            <li>Historique des interventions synchronis&eacute; dans le passeport digital.</li>
-                            <li>Kit UX d&eacute;di&eacute; aux centres de r&eacute;paration agr&eacute;&eacute;s.</li>
+                            <li>Accès à une plateforme interactive permettant de suivre l’historique d’entretien et les interventions.</li>
+                            <li>Conseils personnalisés sur la durabilité textile et la prolongation du cycle de vie.</li>
+                            <li>Partenariats avec des ateliers locaux agréés pour favoriser la réparation de proximité.</li>
                         </ul>
                     </article>
                 </div>
@@ -1352,3 +1417,4 @@
     </script>
 </body>
 </html>
+
