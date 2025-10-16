@@ -78,19 +78,110 @@
 
         nav {
             display: flex;
+            align-items: center;
             gap: 1.3rem;
         }
 
-        nav a {
+        nav a,
+        .nav-dropdown-toggle {
             color: var(--slate);
             font-weight: 600;
             text-decoration: none;
             font-size: 0.98rem;
-            transition: color 0.2s ease;
+            transition: color 0.2s ease, transform 0.15s ease;
         }
 
-        nav a:hover {
+        nav a:hover,
+        .nav-dropdown-toggle:hover {
             color: var(--blue);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-toggle {
+            border: none;
+            background: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .nav-dropdown-toggle:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 3px;
+        }
+
+        .nav-dropdown-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+        }
+
+        .nav-dropdown-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-dropdown-caret {
+            width: 0.7rem;
+            height: 0.7rem;
+            display: inline-block;
+            transform: rotate(0deg);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-dropdown.is-open .nav-dropdown-caret {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.8rem);
+            left: 50%;
+            transform: translate(-50%, -8px);
+            background: white;
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 14px;
+            box-shadow: 0 18px 34px rgba(11, 34, 54, 0.14);
+            padding: 0.75rem 0.9rem;
+            display: grid;
+            gap: 0.35rem;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+            transform-origin: top center;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-dropdown.is-open .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            color: var(--dark);
+            font-size: 0.95rem;
+            padding: 0.35rem 0.25rem;
+            border-radius: 8px;
+            transition: background 0.18s ease, color 0.18s ease;
+        }
+
+        .nav-dropdown-menu a:hover,
+        .nav-dropdown-menu a:focus-visible {
+            background: rgba(74, 144, 226, 0.1);
+            color: var(--blue);
+            outline: none;
         }
 
         .nav-cta {
@@ -535,6 +626,18 @@
             line-height: 1.7;
         }
 
+        .section-illustration {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.1rem;
+        }
+
+        .section-illustration img {
+            width: min(100%, 360px);
+            border-radius: 18px;
+            box-shadow: 0 22px 42px rgba(26, 188, 156, 0.18);
+        }
+
         .info-grid {
             display: grid;
             gap: 1.6rem;
@@ -731,6 +834,56 @@
         .info-card h3 {
             font-size: 1.12rem;
             color: var(--dark);
+            margin: 0;
+        }
+
+        .info-card-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(74, 144, 226, 0.12);
+            border: 1px solid rgba(74, 144, 226, 0.22);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            flex-shrink: 0;
+            box-shadow: 0 12px 24px rgba(74, 144, 226, 0.14);
+        }
+
+        .info-card-icon--care {
+            background: rgba(26, 188, 156, 0.16);
+            border: 1px solid rgba(26, 188, 156, 0.28);
+            color: var(--deep-teal);
+            box-shadow: 0 12px 24px rgba(26, 188, 156, 0.16);
+        }
+
+        .info-card-icon--repair {
+            background: rgba(74, 144, 226, 0.16);
+        }
+
+        .info-card-icon--community {
+            background: rgba(39, 174, 96, 0.16);
+            border: 1px solid rgba(39, 174, 96, 0.28);
+            color: var(--green);
+            box-shadow: 0 12px 24px rgba(39, 174, 96, 0.16);
+        }
+
+        .info-card-icon svg {
+            width: 72%;
+            height: 72%;
+        }
+
+        .info-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .list-check {
@@ -956,7 +1109,28 @@
             <a href="index.html#accueil" class="logo"><img src="image/logo color.png" alt="Logo TID" /><span>TID Passport</span></a>
             <nav aria-label="Navigation principale">
                 <a href="index.html#presentation">Produit</a>
-                <a href="index.html#dpp">Vue synth&eacute;tique</a>
+                <div class="nav-dropdown">
+                    <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dpp-menu">
+                        <span class="nav-dropdown-icon" aria-hidden="true">
+                            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="4" width="14" height="4" rx="1.2" fill="currentColor"></rect>
+                                <rect x="3" y="9" width="14" height="4" rx="1.2" fill="currentColor" opacity="0.65"></rect>
+                                <rect x="3" y="14" width="14" height="4" rx="1.2" fill="currentColor" opacity="0.35"></rect>
+                            </svg>
+                        </span>
+                        <span>DPP</span>
+                        <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true">
+                            <path d="M2.2 4.4l3.8 3.8c0.3 0.3 0.8 0.3 1.1 0l3.8-3.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <ul class="nav-dropdown-menu" role="menu" id="nav-dpp-menu" hidden>
+                        <li><a href="#matieres" role="menuitem">Mati&egrave;res</a></li>
+                        <li><a href="#fabrication" role="menuitem">Fabrication</a></li>
+                        <li><a href="#certifications" role="menuitem">Certifications</a></li>
+                        <li><a href="#entretien" role="menuitem">Entretien &amp; r&eacute;paration</a></li>
+                        <li><a href="#fin-de-vie" role="menuitem">Fin de vie</a></li>
+                    </ul>
+                </div>
                 <a href="dpp.html#contact-card">Contact</a>
             </nav>
             <a class="nav-cta" >Acceuil</a>
@@ -1200,7 +1374,19 @@
                 </div>
                 <div class="info-grid">
                     <article class="info-card">
-                        <h3>Entretien préventif</h3>
+                        <div class="info-card-heading">
+                            <span class="info-card-icon info-card-icon--care" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="10" y="8" width="28" height="32" rx="4" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                    <line x1="10" y1="16" x2="38" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                                    <circle cx="18" cy="12" r="2" fill="currentColor"></circle>
+                                    <circle cx="24" cy="28" r="8.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                                    <path d="M21.3 27.3c1.9 1.5 4.3 1.8 6.5 0.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+                                    <path d="M30.3 33.5c2.5-4.5 6-6.2 10.2-5.7-1.4 4-3.9 6.6-7.4 7.9-1.6-0.8-2.4-1.6-2.8-2.2z" fill="var(--green)" stroke="var(--green)" stroke-width="0.8" stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            <h3>Entretien pr&eacute;ventif</h3>
+                        </div>
                         <ul class="list-check">
                             <li>Lavage recommandé à basse température pour réduire l’usure des fibres et la consommation d’énergie.</li>
                             <li>Séchage à l’air libre privilégié, limitant l’impact carbone et prolongeant la tenue du tissu.</li>
@@ -1208,7 +1394,12 @@
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>Réparation & seconde vie</h3>
+                        <div class="info-card-heading">
+                            <span class="info-card-icon info-card-icon--repair" aria-hidden="true">
+                                <img src="image/second%20hand.png" alt="">
+                            </span>
+                            <h3>R&eacute;paration &amp; seconde vie</h3>
+                        </div>
                         <ul class="list-check">
                             <li>Guides vidéo et tutoriaux disponibles via le QR code TID : couture, retouches simples et remplacement d’étiquettes.</li>
                             <li>Programme de retour atelier : réparations effectuées dans nos ateliers partenaires (France / Canada).</li>
@@ -1216,7 +1407,17 @@
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>Support & communauté</h3>
+                        <div class="info-card-heading">
+                            <span class="info-card-icon info-card-icon--community" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 24l9.4-9.4a3.6 3.6 0 0 1 5.1 0l4.3 4.3 4.3-4.3a3.6 3.6 0 0 1 5.1 0L40 23.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M22 19.5l-5.2 5.2a3 3 0 0 0 0 4.2l3 3a2.6 2.6 0 0 0 3.7 0l1-1 1.3 1.3a2.6 2.6 0 0 0 3.7 0l0.8-0.8 1.3 1.3a2.6 2.6 0 0 0 3.7 0l4.7-4.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M15 32.5l3.8 3.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M31 32.5l3.8 3.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            <h3>Support &amp; communaut&eacute;</h3>
+                        </div>
                         <ul class="list-check">
                             <li>Accès à une plateforme interactive permettant de suivre l’historique d’entretien et les interventions.</li>
                             <li>Conseils personnalisés sur la durabilité textile et la prolongation du cycle de vie.</li>
@@ -1234,31 +1435,34 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Fin de vie</h2>
-                    <p>Strat&eacute;gie de seconde vie et recyclage orchestr&eacute;e avec les &eacute;co-organismes partenaires. Le passeport digital assure la tra&ccedil;abilit&eacute; jusqu'&agrave; la valorisation finale.</p>
+                    <p>Chaque vêtement sont conçu pour vivre plusieurs vies. À travers son passeport numérique, le cycle de vie ne s’arrête pas à la dernière utilisation : il se prolonge grâce à la revente, la réparation, et le recyclage responsable.</p>
+                </div>
+                <div class="section-illustration">
+                    <img src="image/recyclable.jpeg" alt="Illustration de recyclage textile" loading="lazy">
                 </div>
                 <div class="info-grid">
                     <article class="info-card">
-                        <h3>R&eacute;emploi &amp; seconde vie</h3>
+                        <h3>Seconde main & revente</h3>
                         <ul class="list-check">
-                            <li>Programme de reprise avec op&eacute;rateurs partenaires pour le reconditionnement (objectif : 40&nbsp;% des volumes).</li>
-                            <li>Tests fonctionnels automatis&eacute;s pour requalification en grades A/B.</li>
-                            <li>Garantie prolong&eacute;e de 12&nbsp;mois sur les unit&eacute;s reconditionn&eacute;es.</li>
+                            <li>Les vêtements en bon état sont revalorisés via notre plateforme partenaire de seconde main, garantissant transparence et authenticité grâce au QR code TID.</li>
+                            <li>Chaque pièce reconditionnée reçoit une nouvelle identité numérique : historique d’usage, réparations et origine vérifiée.</li>
+                            <li>L’objectif : allonger la durée de vie du vêtement de 2 à 3 cycles, tout en réduisant les déchets textiles.</li>
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>Recyclage mati&egrave;res</h3>
+                        <h3>Recyclage & transformation</h3>
                         <ul class="list-check">
-                            <li>Partenariat de recyclage de l'aluminium (&gt; 95&nbsp;% de mati&egrave;re secondaire).</li>
-                            <li>Traitement des batteries LiFePO<sub>4</sub> via une fili&egrave;re agr&eacute;&eacute;e (proc&eacute;d&eacute; hydrom&eacute;tallurgique).</li>
-                            <li>Tra&ccedil;abilit&eacute; des lots remont&eacute;e dans le DPP (API RecyTech).</li>
+                            <li>Les textiles non revendables sont démantelés et triés par matière (coton, polyester, fibres mixtes).</li>
+                            <li>Le coton biologique est recyclé en fil, tandis que le polyester issu de bouteilles PET est refondu en fibre nouvelle génération.</li>
+                            <li>Les données de recyclage sont intégrées automatiquement dans le DPP, assurant une traçabilité totale du processus.</li>
                         </ul>
                     </article>
                     <article class="info-card">
-                        <h3>Conformit&eacute; r&eacute;glementaire</h3>
+                        <h3>Boucle circulaire</h3>
                         <ul class="list-check">
-                            <li>Respect de la directive DEEE et de la responsabilit&eacute; &eacute;largie du producteur.</li>
-                            <li>Certificats de valorisation disponibles sous 30&nbsp;jours.</li>
-                            <li>Reporting ESG consolid&eacute; dans le portail client.</li>
+                            <li>Les vêtements irréparables alimentent des filières d’innovation textile (isolation, rembourrage, prototypes de tissus circulaires).</li>
+                            <li>Les fibres récupérées entrent dans un nouveau cycle de production certifié, contribuant à réduire les émissions et l’usage de ressources vierges.</li>
+                            <li>ette étape boucle la chaîne : du fil à la fibre, puis du vêtement à la ressource.</li>
                         </ul>
                     </article>
                 </div>
@@ -1290,6 +1494,77 @@
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            var navDropdown = document.querySelector(".nav-dropdown");
+            if (navDropdown) {
+                var dropdownToggle = navDropdown.querySelector(".nav-dropdown-toggle");
+                var dropdownMenu = navDropdown.querySelector(".nav-dropdown-menu");
+                var closeDropdown = function () {
+                    if (!navDropdown.classList.contains("is-open")) {
+                        return;
+                    }
+                    navDropdown.classList.remove("is-open");
+                    dropdownToggle.setAttribute("aria-expanded", "false");
+                    dropdownMenu.hidden = true;
+                };
+                var openDropdown = function () {
+                    if (navDropdown.classList.contains("is-open")) {
+                        return;
+                    }
+                    navDropdown.classList.add("is-open");
+                    dropdownToggle.setAttribute("aria-expanded", "true");
+                    dropdownMenu.hidden = false;
+                };
+                if (dropdownToggle && dropdownMenu) {
+                    dropdownToggle.addEventListener("click", function (event) {
+                        var isOpen = navDropdown.classList.contains("is-open");
+                        if (isOpen) {
+                            closeDropdown();
+                        } else {
+                            openDropdown();
+                            if (event.detail === 0) {
+                                var firstLink = dropdownMenu.querySelector("a");
+                                if (firstLink) {
+                                    firstLink.focus();
+                                }
+                            }
+                        }
+                    });
+
+                    dropdownToggle.addEventListener("keydown", function (event) {
+                        if (event.key === "Escape") {
+                            closeDropdown();
+                            dropdownToggle.blur();
+                        }
+                    });
+
+                    dropdownMenu.addEventListener("keydown", function (event) {
+                        if (event.key === "Escape") {
+                            closeDropdown();
+                            dropdownToggle.focus();
+                        }
+                    });
+
+                    dropdownMenu.querySelectorAll("a").forEach(function (link) {
+                        link.addEventListener("click", function () {
+                            closeDropdown();
+                        });
+                    });
+
+                    document.addEventListener("click", function (event) {
+                        if (!navDropdown.contains(event.target)) {
+                            closeDropdown();
+                        }
+                    });
+
+                    navDropdown.addEventListener("focusout", function (event) {
+                        var nextFocus = event.relatedTarget;
+                        if (!navDropdown.contains(nextFocus)) {
+                            closeDropdown();
+                        }
+                    });
+                }
+            }
+
             var switchers = document.querySelectorAll(".hero-visual-switcher");
 
             switchers.forEach(function (switcher) {
