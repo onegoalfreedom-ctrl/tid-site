@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFlow TID - Passeport Produit Digital</title>
+    <title>TID - Passeport Produit Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
@@ -270,6 +270,7 @@
 
         .dpp-hero {
             padding-top: 5.5rem;
+            scroll-margin-top: 110px;
         }
 
         .dpp-hero-grid {
@@ -1064,6 +1065,7 @@
             border: 1px solid rgba(74, 144, 226, 0.18);
             display: grid;
             gap: 0.6rem;
+            scroll-margin-top: 110px;
         }
 
         .contact-card span {
@@ -1108,7 +1110,7 @@
         <div class="nav-wrapper">
             <a href="index.html#accueil" class="logo"><img src="image/logo color.png" alt="Logo TID" /><span>TID Passport</span></a>
             <nav aria-label="Navigation principale">
-                <a href="index.html#presentation">Produit</a>
+                <a href="#presentation">Produit</a>
                 <div class="nav-dropdown">
                     <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dpp-menu">
                         <span class="nav-dropdown-icon" aria-hidden="true">
@@ -1131,14 +1133,14 @@
                         <li><a href="#fin-de-vie" role="menuitem">Fin de vie</a></li>
                     </ul>
                 </div>
-                <a href="dpp.html#contact-card">Contact</a>
+                <a href="#contact-card">Contact</a>
             </nav>
             <a class="nav-cta" >Acceuil</a>
         </div>
     </header>
 
     <main>
-        <section class="dpp-hero">
+        <section id="presentation" class="dpp-hero">
             <div class="container dpp-hero-grid">
                 <div class="hero-text">
                     <span class="badge">Haut à manches courtes</span>
@@ -1482,9 +1484,9 @@
             <div class="footer-nav">
                 <a href="index.html#accueil">Vitrine produit</a>
                 <a href="index.html#dpp">Synth&egrave;se DPP</a>
-                <a href="dpp.html#contact-card">Contact</a>
+                <a href="#contact-card">Contact</a>
             </div>
-            <div class="contact-card">
+            <div class="contact-card" id="contact-card">
                 <span>Parlons-en</span>
                 <p>Email : contact@tidpassport.com</p>
                 <p>T&eacute;l&eacute;phone : +1(450) 515-8444</p>

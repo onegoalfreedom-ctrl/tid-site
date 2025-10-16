@@ -656,6 +656,50 @@
             color: var(--teal);
             font-size: 0.9rem;
         }
+
+        .dpp-spectrum--collapsed .dpp-spectrum-box .dpp-block:not(:first-of-type) {
+            display: none;
+        }
+
+        .dpp-spectrum__toggle {
+            margin: 1.6rem auto 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            border: none;
+            background: white;
+            color: var(--blue);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            padding: 0.85rem 1.35rem;
+            border-radius: 999px;
+            box-shadow: 0 14px 28px rgba(74, 144, 226, 0.16);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        }
+
+        .dpp-spectrum__toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 32px rgba(26, 188, 156, 0.22);
+            color: var(--deep-teal);
+        }
+
+        .dpp-spectrum__toggle:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 4px;
+        }
+
+        .dpp-spectrum__toggle-icon {
+            width: 1.1rem;
+            height: 1.1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .dpp-spectrum__toggle[aria-expanded="true"] .dpp-spectrum__toggle-icon {
+            transform: rotate(180deg);
+        }
         footer {
             background: #041726;
             color: rgba(255, 255, 255, 0.74);
@@ -903,11 +947,11 @@
             </div>
         </section>
 
-                <section class="dpp-spectrum" id="dpp">
+        <section class="dpp-spectrum dpp-spectrum--collapsed" id="dpp">
             <div class="container">
                 <h2>Panorama des donn&eacute;es d'un DPP textile</h2>
                 <p class="dpp-spectrum__lead">Ces informations renforcent la transparence produit et nourrissent les exigences r&eacute;glementaires comme les attentes clients.</p>
-                <div class="dpp-spectrum-box">
+                <div class="dpp-spectrum-box" id="dpp-spectrum-sections">
                     <div class="dpp-block">
                         <h3>Composition &amp; mati&egrave;res</h3>
                         <ul>
@@ -972,6 +1016,12 @@
                         </ul>
                     </div>
                 </div>
+                <button type="button" class="dpp-spectrum__toggle" aria-expanded="false" aria-controls="dpp-spectrum-sections">
+                    <span class="dpp-spectrum__toggle-label">Afficher toutes les sections</span>
+                    <svg class="dpp-spectrum__toggle-icon" viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="M4.5 8l5.1 5.1c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3L16 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
             </div>
         </section>
     </main>
@@ -995,6 +1045,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var spectrumSection = document.querySelector(".dpp-spectrum");
+            var toggle = document.querySelector(".dpp-spectrum__toggle");
+            var toggleLabel = document.querySelector(".dpp-spectrum__toggle-label");
+
+            if (!spectrumSection || !toggle || !toggleLabel) {
+                return;
+            }
+
+            toggle.addEventListener("click", function () {
+                var isCollapsed = spectrumSection.classList.toggle("dpp-spectrum--collapsed");
+                var isExpanded = !isCollapsed;
+
+                toggle.setAttribute("aria-expanded", String(isExpanded));
+                toggleLabel.textContent = isExpanded ? "Masquer les sections" : "Afficher toutes les sections";
+            });
+        });
+    </script>
 
     </body>
 </html>
