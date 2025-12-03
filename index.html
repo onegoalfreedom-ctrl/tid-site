@@ -51,8 +51,7 @@
         }
 
         header {
-            position: sticky;
-            top: 0;
+            position: static;
             backdrop-filter: blur(14px);
             background: rgba(255, 255, 255, 0.85);
             border-bottom: 1px solid rgba(51, 65, 85, 0.12);
@@ -91,6 +90,7 @@
         nav {
             display: flex;
             gap: 1.5rem;
+            align-items: center;
         }
 
         nav a {
@@ -99,6 +99,23 @@
             text-decoration: none;
             font-size: 0.98rem;
             transition: color 0.2s ease;
+            position: relative;
+            padding-left: 0.15rem;
+        }
+
+        nav a + a {
+            padding-left: 1rem;
+        }
+
+        nav a + a::before {
+            content: "";
+            position: absolute;
+            left: -0.55rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 18px;
+            background: rgba(51, 65, 85, 0.24);
         }
 
         nav a:hover {
@@ -106,7 +123,8 @@
         }
 
         .nav-cta {
-            padding: 0.6rem 1.2rem;
+            padding: 0.45rem 1rem;
+            font-size: 0.92rem;
             border-radius: 999px;
             background: linear-gradient(135deg, var(--blue), var(--teal));
             color: white;
@@ -371,6 +389,11 @@
             font-size: 0.86rem;
         }
 
+        .status--concept {
+            background: rgba(234, 179, 8, 0.16);
+            color: #a16207;
+        }
+
         .status--review {
             background: rgba(74, 144, 226, 0.16);
             color: var(--blue);
@@ -413,6 +436,145 @@
             font-weight: 600;
             color: var(--dark);
             font-size: 0.9rem;
+        }
+
+        .category-cell {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .category-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.22), rgba(26, 188, 156, 0.22));
+            border: 1px dashed rgba(148, 163, 184, 0.5);
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .category-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.65rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(74, 144, 226, 0.32);
+            background: white;
+            color: var(--dark);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            box-shadow: 0 10px 18px -12px rgba(74, 144, 226, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .category-button:focus-visible {
+            outline: 2px solid rgba(74, 144, 226, 0.5);
+            outline-offset: 2px;
+        }
+
+        .category-button[disabled] {
+            cursor: not-allowed;
+            opacity: 0.75;
+        }
+
+        .product-link-btn {
+            padding: 0.35rem 0.75rem;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            background: white;
+            color: rgba(11, 34, 54, 0.8);
+            font-weight: 600;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .product-link-btn:hover {
+            border-color: rgba(74, 144, 226, 0.5);
+            color: var(--blue);
+        }
+
+        .placeholder-value {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.6rem;
+            padding: 0.45rem 0.6rem;
+            border-radius: 10px;
+            background: rgba(148, 163, 184, 0.12);
+            color: rgba(11, 34, 54, 0.7);
+            font-weight: 600;
+        }
+
+        .remaining {
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: 0.02em;
+        }
+
+        .collapsible-table {
+            position: relative;
+            margin-bottom: 2.4rem;
+        }
+
+        .collapsible-table .table-wrapper {
+            max-height: 320px;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .collapsible-table.is-expanded .table-wrapper {
+            max-height: 1200px;
+        }
+
+        .table-fade {
+            position: absolute;
+            inset: auto 0 64px 0;
+            height: 120px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 100%);
+            transition: opacity 0.25s ease;
+        }
+
+        .collapsible-table.is-expanded .table-fade {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .collapse-toggle {
+            position: absolute;
+            left: 50%;
+            bottom: -26px;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.36);
+            background: white;
+            color: var(--dark);
+            font-weight: 700;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+
+        .collapse-toggle svg {
+            transition: transform 0.25s ease;
+        }
+
+        .collapsible-table.is-expanded .collapse-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .is-hidden {
+            display: none;
         }
 
 
@@ -796,11 +958,13 @@
         <div class="nav-wrapper">
             <a href="#accueil" class="logo"><img src="image/logo color.png" alt="Logo TID" /><span>TID Passport</span></a>
             <nav aria-label="Navigation principale">
-                <a href="#demande">Demande ajout DPP</a>
-                <a href="#dpp">DPP</a>
-                <a href="#contact">Contact</a>
+                <a href="#demande">Demande DPP</a>
+                <a href="#progression">Tableau de progression</a>
+                <a href="#produit-specifique">Référentiel (R.S)</a>
+                <a href="#dpp">Panorama complet</a>
+                <a href="#contact">Contact équipe</a>
             </nav>
-            <a class="nav-cta" href="#contact">Demander une démo</a>
+            <a class="nav-cta" href="#accueil">Page d'accueil</a>
         </div>
     </header>
 
@@ -822,7 +986,7 @@
                 </ul>
             </div>
             <aside class="hero-card request-form" aria-label="Formulaire de demande de DPP">
-                <h2>Demande d'ajout de DPP</h2>
+                <h2>Demande d'ajout ou de modification DPP</h2>
                 <form id="demande-form" class="dpp-request-form">
                     <div class="form-field">
                         <label for="company-name">Nom de l'entreprise</label>
@@ -859,20 +1023,169 @@
                 </form>
             </aside>
         </div>
-    </section>
+        </section>
 
         <section class="progress-overview" id="progression">
             <div class="container">
                 <div class="section-heading">
                     <span class="badge">Tableau</span>
                     <h2>Tableau de progression</h2>
-                    <p>Visualisez l'état d'avancement de vos passeports produits : chaque ligne indique le niveau de complétion et les données restantes à fournir.</p>
+                    <p>Visualisez l'état d'avancement de vos passeports produits par catégorie : la première profondeur affiche vos familles d'articles, et les boutons inactifs ouvriront la deuxième profondeur.</p>
                 </div>
-                <div class="table-card">
-                    <div class="table-title">Nom compagnie</div>
+                <div class="collapsible-table is-collapsed" id="catalogue-wrapper">
+                    <div class="table-card" id="table-catalogue">
+                        <div class="table-title">Catalogue vêtements</div>
+                        <div class="table-wrapper">
+                            <table class="progress-table">
+                                <caption class="sr-only">Progression des Digital Product Passports</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Catégorie</th>
+                                        <th scope="col">GTIN</th>
+                                        <th scope="col">Statut</th>
+                                        <th scope="col">Avancement</th>
+                                        <th scope="col">À compléter</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="T-shirts à manches courtes ou longues" style="background-image: url('image/T-shirt.png');"></div>
+                                                <a class="category-button" href="#table-tshirts">T-shirts à manches courtes ou longues</a>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--concept">Conception</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">60/75</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Pulls et chandails en tricot, coton ou molleton" style="background-image: url('image/Pull coton.png');"></div>
+                                                <button class="category-button" type="button" disabled>Pulls et chandails en tricot, coton ou molleton</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--draft">Brouillon</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">100/156</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Sweatshirts et hoodies" style="background-image: url('image/Hoodie.png');"></div>
+                                                <button class="category-button" type="button" disabled>Sweatshirts et hoodies</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--review">Relecture</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">1006/1017</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Chemises casual ou habillées" style="background-image: url('image/Chemise.png');"></div>
+                                                <button class="category-button" type="button" disabled>Chemises casual ou habillées</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--published">Publié</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">66/67</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Polos" style="background-image: url('image/Polo.png');"></div>
+                                                <button class="category-button" type="button" disabled>Polos</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--draft">Brouillon</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">98/101</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Vestes et blousons" style="background-image: url('image/blousons.png');"></div>
+                                                <button class="category-button" type="button" disabled>Vestes et blousons</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--concept">Conception</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">60/75</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Manteaux en laine, duvet, trench ou parkas" style="background-image: url('image/mateau duvet, trensh.png');"></div>
+                                                <button class="category-button" type="button" disabled>Manteaux en laine, duvet, trench ou parkas</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--review">Relecture</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">100/156</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Pantalons, denim, cargo, chino ou joggers" style="background-image: url('image/pantalon chino.png');"></div>
+                                                <button class="category-button" type="button" disabled>Pantalons, denim, cargo, chino ou joggers</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--published">Publié</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">1006/1017</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Shorts quotidien ou sportif" style="background-image: url('image/short.png');"></div>
+                                                <button class="category-button" type="button" disabled>Shorts quotidien ou sportif</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--draft">Brouillon</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">66/67</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">
+                                            <div class="category-cell">
+                                                <div class="category-thumb" role="img" aria-label="Robes et jupes" style="background-image: url('image/jupes.png');"></div>
+                                                <button class="category-button" type="button" disabled>Robes et jupes</button>
+                                            </div>
+                                        </th>
+                                        <td>-</td>
+                                        <td><span class="status-pill status--concept">Conception</span></td>
+                                        <td><span class="placeholder-value">-</span></td>
+                                        <td><span class="remaining">98/101</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="table-fade"></div>
+                    <button class="collapse-toggle" type="button" aria-expanded="false" aria-controls="table-catalogue">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                            <path d="M4.5 8l5.1 5.1c.2.2.5.3.7.3s.5-.1.7-.3L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span class="collapse-toggle__label">Afficher la liste</span>
+                    </button>
+                </div>
+
+                <div class="table-card is-hidden" id="table-tshirts">
+                    <div class="table-title">T-shirts à manches courtes ou longues</div>
                     <div class="table-wrapper">
                         <table class="progress-table">
-                            <caption class="sr-only">Progression des Digital Product Passports</caption>
+                            <caption class="sr-only">Progression des T-shirts à manches courtes ou longues</caption>
                             <thead>
                                 <tr>
                                     <th scope="col">Produit</th>
@@ -884,36 +1197,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">EcoFlow TID – Station modulaire</th>
-                                    <td>3514856915234</td>
-                                    <td><span class="status-pill status--review">Relecture conformité</span></td>
-                                    <td>
-                                        <div class="progress" aria-label="Avancement 82%">
-                                            <div class="progress-track">
-                                                <span class="progress-bar" style="width: 82%;"></span>
-                                            </div>
-                                            <span class="progress-value">82%</span>
-                                        </div>
-                                    </td>
-                                    <td>Résultats ACV finaux et pièces jointes fournisseurs.</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">PulseWave Solar – Module stockage</th>
-                                    <td>7645981200345</td>
-                                    <td><span class="status-pill status--draft">Brouillon</span></td>
-                                    <td>
-                                        <div class="progress" aria-label="Avancement 46%">
-                                            <div class="progress-track">
-                                                <span class="progress-bar" style="width: 46%;"></span>
-                                            </div>
-                                            <span class="progress-value">46%</span>
-                                        </div>
-                                    </td>
-                                    <td>Données ERP (volumes annuels) et validations PLM.</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">UrbanCharge Lite – Borne mobile</th>
-                                    <td>6123459871200</td>
+                                    <th scope="row"><button class="product-link-btn" type="button" onclick="location.href='dpp.html'">Haut à manches courtes</button></th>
+                                    <td>1253458963251</td>
                                     <td><span class="status-pill status--published">Publié</span></td>
                                     <td>
                                         <div class="progress" aria-label="Avancement 100%">
@@ -923,11 +1208,82 @@
                                             <span class="progress-value">100%</span>
                                         </div>
                                     </td>
-                                    <td>Aucune action restante.</td>
+                                    <td>Publié - aucune action restante.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">t-shirt motifs optiques</th>
+                                    <td>7485963124578</td>
+                                    <td><span class="status-pill status--review">Relecture</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 78%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 78%;"></span>
+                                            </div>
+                                            <span class="progress-value">78%</span>
+                                        </div>
+                                    </td>
+                                    <td>Vérifier la validité et la date des certificats.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">t-shirt carré côtelé</th>
+                                    <td>6397512048563</td>
+                                    <td><span class="status-pill status--draft">Brouillon</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 42%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 42%;"></span>
+                                            </div>
+                                            <span class="progress-value">42%</span>
+                                        </div>
+                                    </td>
+                                    <td>Obtenir les certifications (GOTS, GRS, BSCI, REACH…).</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">t-shirt droit col rond</th>
+                                    <td>5896321478542</td>
+                                    <td><span class="status-pill status--concept">Conception</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 18%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 18%;"></span>
+                                            </div>
+                                            <span class="progress-value">18%</span>
+                                        </div>
+                                    </td>
+                                    <td>Déterminer le niveau de granularité (lot, SKU ou produit individuel).</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">t-shirt emblème</th>
+                                    <td>9514786321547</td>
+                                    <td><span class="status-pill status--review">Relecture</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 65%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 65%;"></span>
+                                            </div>
+                                            <span class="progress-value">65%</span>
+                                        </div>
+                                    </td>
+                                    <td>Identifier le type de produit textile et vérifier le pourcentage exact de fibres.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">t-shirt col rond broderie</th>
+                                    <td>8426597314589</td>
+                                    <td><span class="status-pill status--draft">Brouillon</span></td>
+                                    <td>
+                                        <div class="progress" aria-label="Avancement 54%">
+                                            <div class="progress-track">
+                                                <span class="progress-bar" style="width: 54%;"></span>
+                                            </div>
+                                            <span class="progress-value">54%</span>
+                                        </div>
+                                    </td>
+                                    <td>Obtenir les preuves (photos, certificats, audits) et séparer données publiques.</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1057,14 +1413,57 @@
                 return;
             }
 
-            toggle.addEventListener("click", function () {
-                var isCollapsed = spectrumSection.classList.toggle("dpp-spectrum--collapsed");
-                var isExpanded = !isCollapsed;
+        toggle.addEventListener("click", function () {
+            var isCollapsed = spectrumSection.classList.toggle("dpp-spectrum--collapsed");
+            var isExpanded = !isCollapsed;
 
-                toggle.setAttribute("aria-expanded", String(isExpanded));
-                toggleLabel.textContent = isExpanded ? "Masquer les sections" : "Afficher toutes les sections";
-            });
+            toggle.setAttribute("aria-expanded", String(isExpanded));
+            toggleLabel.textContent = isExpanded ? "Masquer les sections" : "Afficher toutes les sections";
         });
+    });
+    </script>
+
+    <script>
+        (function () {
+            var tshirtButton = document.querySelector('.category-button[href="#table-tshirts"]');
+            var catalogueWrapper = document.getElementById('catalogue-wrapper');
+            var tshirtCard = document.getElementById('table-tshirts');
+
+            if (tshirtButton && catalogueWrapper && tshirtCard) {
+                tshirtButton.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    catalogueWrapper.classList.add('is-hidden');
+                    tshirtCard.classList.remove('is-hidden');
+                    tshirtCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+        })();
+
+        (function () {
+            var collapsible = document.getElementById('catalogue-wrapper');
+            if (!collapsible) return;
+
+            var toggleBtn = collapsible.querySelector('.collapse-toggle');
+            var label = collapsible.querySelector('.collapse-toggle__label');
+            var tableWrapper = collapsible.querySelector('.table-wrapper');
+
+            if (!toggleBtn || !label || !tableWrapper) return;
+
+            toggleBtn.addEventListener('click', function () {
+                var isExpanded = collapsible.classList.toggle('is-expanded');
+                if (isExpanded) {
+                    collapsible.classList.remove('is-collapsed');
+                } else {
+                    collapsible.classList.add('is-collapsed');
+                }
+                toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+                label.textContent = isExpanded ? 'Masquer la liste' : 'Afficher la liste';
+
+                if (isExpanded) {
+                    tableWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        })();
     </script>
 
     </body>
